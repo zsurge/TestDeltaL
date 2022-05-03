@@ -1,0 +1,13 @@
+H:\TSJ PRO\TestDeltaL\TestDeltaL\bin\Debug\NLog.config
+H:\TSJ PRO\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.exe.config
+H:\TSJ PRO\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.exe
+H:\TSJ PRO\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.pdb
+H:\TSJ PRO\TestDeltaL\TestDeltaL\bin\Debug\NLog.dll
+H:\TSJ PRO\TestDeltaL\TestDeltaL\bin\Debug\NLog.xml
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Form1.resources
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Properties.Resources.resources
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.GenerateResource.cache
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CoreCompileInputs.cache
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CopyComplete
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb
