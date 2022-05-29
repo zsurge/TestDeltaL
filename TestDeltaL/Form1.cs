@@ -9,18 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
+
 namespace TestDeltaL
 {
     public partial class Form1 : Form
     {
-        public enum DeviceType
-        {
-            TDR = 0,
-            DELTAL = 1,
-        }
 
-        public DeviceType gDeviceType = DeviceType.TDR;
 
+        //设置参数设置窗体的表数据
+        DataTable gdt;
 
         public Form1()
         {
@@ -39,7 +36,7 @@ namespace TestDeltaL
             {
                 tsb_GetTestIndex.Visible = false;
                 tsb_StartTest.Visible = false;
-                gDeviceType = DeviceType.TDR;
+                PubConfig.gDeviceType = PubConfig.DeviceType.DELTAL;        
             }
             else
             {
@@ -58,7 +55,7 @@ namespace TestDeltaL
             {
                 tsb_GetTestIndex.Visible = true;
                 tsb_StartTest.Visible = true;
-                gDeviceType = DeviceType.DELTAL;
+                PubConfig.gDeviceType = PubConfig.DeviceType.TDR;
             }
             else
             {
@@ -160,7 +157,33 @@ namespace TestDeltaL
 
         private void tsb_DevParamSet_Click(object sender, EventArgs e)
         {
+            if (PubConfig.gDeviceType == PubConfig.DeviceType.TDR)
+            {
+                TdrParamSet devParamSet = new TdrParamSet(gdt);
+                devParamSet.ChangeDgv += new TdrParamSet.ChangeDgvHandler(Change_DataGridView);
+                devParamSet.Show();
+            }
+            else if (PubConfig.gDeviceType == PubConfig.DeviceType.DELTAL)
+            {
+                DelealParamSet devParamSet = new DelealParamSet(gdt);
+                devParamSet.ChangeDgv += new DelealParamSet.ChangeDgvHandler(Change_DataGridView);
+                devParamSet.Show();
+            }
 
+
+        }
+
+        public void Change_DataGridView(DataGridView dt)
+        {
+            if (dgv_CurrentResult.Rows.Count > 0)
+            {
+                DialogResult dr = MessageBox.Show("将要清除测试数据，是否保存", "提示", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    //DataGridViewToExcel(dgv_CurrentResult);
+                    MessageBox.Show("123");
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -13,3 +13,4 @@ H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
 H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb
 H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csprojAssemblyReference.cache
 H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DelealParamSet.resources
+H:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.TdrParamSet.resources

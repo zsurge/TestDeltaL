@@ -42,17 +42,6 @@
             this.tsb_layer3 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv_xml_show = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Step = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Layer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Short_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Medium_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Long_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecordPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -76,6 +65,17 @@
             this.Loss_Upper_limit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uncertainty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Step = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Layer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Short_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medium_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Long_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecordPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -239,72 +239,6 @@
             this.dgv_xml_show.RowTemplate.Height = 23;
             this.dgv_xml_show.Size = new System.Drawing.Size(910, 280);
             this.dgv_xml_show.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Step
-            // 
-            this.Step.HeaderText = "Step";
-            this.Step.Name = "Step";
-            this.Step.ReadOnly = true;
-            // 
-            // Method
-            // 
-            this.Method.HeaderText = "Method";
-            this.Method.Name = "Method";
-            this.Method.ReadOnly = true;
-            // 
-            // Layer
-            // 
-            this.Layer.HeaderText = "Layer";
-            this.Layer.Name = "Layer";
-            this.Layer.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            // 
-            // Short_Length
-            // 
-            this.Short_Length.HeaderText = "Short_Length";
-            this.Short_Length.Name = "Short_Length";
-            this.Short_Length.ReadOnly = true;
-            // 
-            // Medium_Length
-            // 
-            this.Medium_Length.HeaderText = "Medium_Length";
-            this.Medium_Length.Name = "Medium_Length";
-            this.Medium_Length.ReadOnly = true;
-            // 
-            // Long_Length
-            // 
-            this.Long_Length.HeaderText = "Long_Length";
-            this.Long_Length.Name = "Long_Length";
-            this.Long_Length.ReadOnly = true;
-            // 
-            // RecordPath
-            // 
-            this.RecordPath.HeaderText = "RecordPath";
-            this.RecordPath.Name = "RecordPath";
-            this.RecordPath.ReadOnly = true;
-            // 
-            // SaveCurve
-            // 
-            this.SaveCurve.HeaderText = "SaveCurve";
-            this.SaveCurve.Name = "SaveCurve";
-            this.SaveCurve.ReadOnly = true;
-            // 
-            // SaveImage
-            // 
-            this.SaveImage.HeaderText = "SaveImage";
-            this.SaveImage.Name = "SaveImage";
-            this.SaveImage.ReadOnly = true;
             // 
             // panel1
             // 
@@ -510,6 +444,74 @@
             this.Difference.Name = "Difference";
             this.Difference.ReadOnly = true;
             // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 42;
+            // 
+            // Step
+            // 
+            this.Step.HeaderText = "Step";
+            this.Step.Name = "Step";
+            this.Step.ReadOnly = true;
+            // 
+            // Method
+            // 
+            this.Method.HeaderText = "Method";
+            this.Method.Name = "Method";
+            this.Method.ReadOnly = true;
+            // 
+            // Layer
+            // 
+            this.Layer.HeaderText = "Layer";
+            this.Layer.Name = "Layer";
+            this.Layer.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // Short_Length
+            // 
+            this.Short_Length.HeaderText = "Short_Length";
+            this.Short_Length.Name = "Short_Length";
+            this.Short_Length.ReadOnly = true;
+            // 
+            // Medium_Length
+            // 
+            this.Medium_Length.HeaderText = "Medium_Length";
+            this.Medium_Length.Name = "Medium_Length";
+            this.Medium_Length.ReadOnly = true;
+            // 
+            // Long_Length
+            // 
+            this.Long_Length.HeaderText = "Long_Length";
+            this.Long_Length.Name = "Long_Length";
+            this.Long_Length.ReadOnly = true;
+            // 
+            // RecordPath
+            // 
+            this.RecordPath.HeaderText = "RecordPath";
+            this.RecordPath.Name = "RecordPath";
+            this.RecordPath.ReadOnly = true;
+            // 
+            // SaveCurve
+            // 
+            this.SaveCurve.HeaderText = "SaveCurve";
+            this.SaveCurve.Name = "SaveCurve";
+            this.SaveCurve.ReadOnly = true;
+            // 
+            // SaveImage
+            // 
+            this.SaveImage.HeaderText = "SaveImage";
+            this.SaveImage.Name = "SaveImage";
+            this.SaveImage.ReadOnly = true;
+            // 
             // DelealParamSet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -519,6 +521,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "DelealParamSet";
             this.Text = "Delea L参数设置";
+            this.Load += new System.EventHandler(this.DelealParamSet_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -554,17 +557,6 @@
         private System.Windows.Forms.ToolStripButton tsb_layer3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgv_xml_show;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Step;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Method;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Layer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Short_Length;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Medium_Length;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Long_Length;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RecordPath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaveCurve;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaveImage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox5;
@@ -588,5 +580,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Loss_Upper_limit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uncertainty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Difference;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Step;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Method;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Layer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Short_Length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Medium_Length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Long_Length;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RecordPath;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaveCurve;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaveImage;
     }
 }
