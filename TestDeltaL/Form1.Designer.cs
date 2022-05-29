@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series31 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series32 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsddb_select_mode = new System.Windows.Forms.ToolStripDropDownButton();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sET2DILToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tDRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tdrToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deltaLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsb_DevConnect = new System.Windows.Forms.ToolStripButton();
             this.tsb_DevPOptSet = new System.Windows.Forms.ToolStripButton();
@@ -47,12 +46,20 @@
             this.tsb_GetTestIndex = new System.Windows.Forms.ToolStripButton();
             this.tsb_StartTest = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsb_XmlFileName = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsb_Pnl_ID = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.tsb_Set_id = new System.Windows.Forms.ToolStripTextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lable_test_result = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.mFlag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mStep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mLayer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chart_Tdr = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_CurrentResult = new System.Windows.Forms.DataGridView();
@@ -108,13 +115,6 @@
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.mFlag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mStep = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mLayer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lable_test_result = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -124,6 +124,8 @@
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart_Tdr)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentResult)).BeginInit();
@@ -131,20 +133,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OutPutResult)).BeginInit();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_HistoryResult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
+            this.tsddb_select_mode,
             this.tsb_DevConnect,
             this.tsb_DevPOptSet,
             this.tsb_DevParamSet,
             this.tsb_GetTestIndex,
             this.tsb_StartTest,
             this.toolStripSeparator1,
+            this.tsb_XmlFileName,
             this.toolStripLabel1,
             this.tsb_Pnl_ID,
             this.toolStripLabel2,
@@ -155,44 +156,41 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripDropDownButton1
+            // tsddb_select_mode
             // 
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsddb_select_mode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.modeToolStripMenuItem});
-            this.toolStripDropDownButton1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(69, 36);
-            this.toolStripDropDownButton1.Text = "系统";
+            this.tsddb_select_mode.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tsddb_select_mode.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_select_mode.Image")));
+            this.tsddb_select_mode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsddb_select_mode.Name = "tsddb_select_mode";
+            this.tsddb_select_mode.Size = new System.Drawing.Size(69, 36);
+            this.tsddb_select_mode.Text = "系统";
             // 
             // modeToolStripMenuItem
             // 
             this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sET2DILToolStripMenuItem,
-            this.tDRToolStripMenuItem,
+            this.tdrToolStripMenuItem,
             this.deltaLToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
             this.modeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modeToolStripMenuItem.Text = "Mode";
             // 
-            // sET2DILToolStripMenuItem
+            // tdrToolStripMenuItem
             // 
-            this.sET2DILToolStripMenuItem.Name = "sET2DILToolStripMenuItem";
-            this.sET2DILToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sET2DILToolStripMenuItem.Text = "SET2DIL";
-            // 
-            // tDRToolStripMenuItem
-            // 
-            this.tDRToolStripMenuItem.Name = "tDRToolStripMenuItem";
-            this.tDRToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tDRToolStripMenuItem.Text = "TDR";
+            this.tdrToolStripMenuItem.Checked = true;
+            this.tdrToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tdrToolStripMenuItem.Name = "tdrToolStripMenuItem";
+            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tdrToolStripMenuItem.Text = "TDR";
+            this.tdrToolStripMenuItem.Click += new System.EventHandler(this.tdrToolStripMenuItem_Click);
             // 
             // deltaLToolStripMenuItem
             // 
             this.deltaLToolStripMenuItem.Name = "deltaLToolStripMenuItem";
             this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.deltaLToolStripMenuItem.Text = "Delta L";
+            this.deltaLToolStripMenuItem.Click += new System.EventHandler(this.deltaLToolStripMenuItem_Click);
             // 
             // tsb_DevConnect
             // 
@@ -223,6 +221,7 @@
             this.tsb_DevParamSet.Name = "tsb_DevParamSet";
             this.tsb_DevParamSet.Size = new System.Drawing.Size(109, 36);
             this.tsb_DevParamSet.Text = "量测参数";
+            this.tsb_DevParamSet.Click += new System.EventHandler(this.tsb_DevParamSet_Click);
             // 
             // tsb_GetTestIndex
             // 
@@ -250,6 +249,11 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // tsb_XmlFileName
+            // 
+            this.tsb_XmlFileName.Name = "tsb_XmlFileName";
+            this.tsb_XmlFileName.Size = new System.Drawing.Size(0, 36);
             // 
             // toolStripLabel1
             // 
@@ -307,10 +311,118 @@
             // 
             // splitContainer2.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.chart1);
+            this.splitContainer2.Panel2.Controls.Add(this.Chart_Tdr);
             this.splitContainer2.Size = new System.Drawing.Size(1197, 517);
             this.splitContainer2.SplitterDistance = 262;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // lable_test_result
+            // 
+            this.lable_test_result.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lable_test_result.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lable_test_result.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lable_test_result.Location = new System.Drawing.Point(0, 428);
+            this.lable_test_result.Name = "lable_test_result";
+            this.lable_test_result.Size = new System.Drawing.Size(262, 89);
+            this.lable_test_result.TabIndex = 2;
+            this.lable_test_result.Text = "11111";
+            this.lable_test_result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.mFlag,
+            this.mStep,
+            this.mDescription,
+            this.mLayer});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 82;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(262, 425);
+            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.Visible = false;
+            // 
+            // mFlag
+            // 
+            this.mFlag.HeaderText = "Flag";
+            this.mFlag.MinimumWidth = 10;
+            this.mFlag.Name = "mFlag";
+            this.mFlag.ReadOnly = true;
+            this.mFlag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.mFlag.Width = 54;
+            // 
+            // mStep
+            // 
+            this.mStep.HeaderText = "Step";
+            this.mStep.MinimumWidth = 10;
+            this.mStep.Name = "mStep";
+            this.mStep.ReadOnly = true;
+            this.mStep.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.mStep.Width = 54;
+            // 
+            // mDescription
+            // 
+            this.mDescription.HeaderText = "Description";
+            this.mDescription.MinimumWidth = 10;
+            this.mDescription.Name = "mDescription";
+            this.mDescription.ReadOnly = true;
+            this.mDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.mDescription.Width = 96;
+            // 
+            // mLayer
+            // 
+            this.mLayer.HeaderText = "Layer";
+            this.mLayer.MinimumWidth = 10;
+            this.mLayer.Name = "mLayer";
+            this.mLayer.ReadOnly = true;
+            this.mLayer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.mLayer.Width = 60;
+            // 
+            // Chart_Tdr
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.Chart_Tdr.ChartAreas.Add(chartArea1);
+            this.Chart_Tdr.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.Chart_Tdr.Legends.Add(legend1);
+            this.Chart_Tdr.Location = new System.Drawing.Point(0, 0);
+            this.Chart_Tdr.Name = "Chart_Tdr";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
+            series3.IsVisibleInLegend = false;
+            series3.Legend = "Legend1";
+            series3.Name = "Series3";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.IsVisibleInLegend = false;
+            series4.Legend = "Legend1";
+            series4.Name = "Series4";
+            this.Chart_Tdr.Series.Add(series1);
+            this.Chart_Tdr.Series.Add(series2);
+            this.Chart_Tdr.Series.Add(series3);
+            this.Chart_Tdr.Series.Add(series4);
+            this.Chart_Tdr.Size = new System.Drawing.Size(931, 517);
+            this.Chart_Tdr.TabIndex = 1;
+            this.Chart_Tdr.Text = "chart1";
             // 
             // tabControl1
             // 
@@ -772,110 +884,6 @@
             this.Column4.MinimumWidth = 10;
             this.Column4.Name = "Column4";
             // 
-            // chart1
-            // 
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend8.Name = "Legend1";
-            this.chart1.Legends.Add(legend8);
-            this.chart1.Location = new System.Drawing.Point(0, 0);
-            this.chart1.Name = "chart1";
-            series29.ChartArea = "ChartArea1";
-            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series29.Legend = "Legend1";
-            series29.Name = "Series1";
-            series30.ChartArea = "ChartArea1";
-            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
-            series30.Legend = "Legend1";
-            series30.Name = "Series2";
-            series31.ChartArea = "ChartArea1";
-            series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StepLine;
-            series31.Legend = "Legend1";
-            series31.Name = "Series3";
-            series32.ChartArea = "ChartArea1";
-            series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series32.Legend = "Legend1";
-            series32.Name = "Series4";
-            this.chart1.Series.Add(series29);
-            this.chart1.Series.Add(series30);
-            this.chart1.Series.Add(series31);
-            this.chart1.Series.Add(series32);
-            this.chart1.Size = new System.Drawing.Size(931, 517);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.mFlag,
-            this.mStep,
-            this.mDescription,
-            this.mLayer});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 82;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(262, 425);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.Visible = false;
-            // 
-            // mFlag
-            // 
-            this.mFlag.HeaderText = "Flag";
-            this.mFlag.MinimumWidth = 10;
-            this.mFlag.Name = "mFlag";
-            this.mFlag.ReadOnly = true;
-            this.mFlag.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mFlag.Width = 54;
-            // 
-            // mStep
-            // 
-            this.mStep.HeaderText = "Step";
-            this.mStep.MinimumWidth = 10;
-            this.mStep.Name = "mStep";
-            this.mStep.ReadOnly = true;
-            this.mStep.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mStep.Width = 54;
-            // 
-            // mDescription
-            // 
-            this.mDescription.HeaderText = "Description";
-            this.mDescription.MinimumWidth = 10;
-            this.mDescription.Name = "mDescription";
-            this.mDescription.ReadOnly = true;
-            this.mDescription.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mDescription.Width = 96;
-            // 
-            // mLayer
-            // 
-            this.mLayer.HeaderText = "Layer";
-            this.mLayer.MinimumWidth = 10;
-            this.mLayer.Name = "mLayer";
-            this.mLayer.ReadOnly = true;
-            this.mLayer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.mLayer.Width = 60;
-            // 
-            // lable_test_result
-            // 
-            this.lable_test_result.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lable_test_result.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lable_test_result.Font = new System.Drawing.Font("宋体", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lable_test_result.Location = new System.Drawing.Point(0, 428);
-            this.lable_test_result.Name = "lable_test_result";
-            this.lable_test_result.Size = new System.Drawing.Size(262, 89);
-            this.lable_test_result.TabIndex = 2;
-            this.lable_test_result.Text = "11111";
-            this.lable_test_result.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -885,6 +893,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.Text = "DeltaL Automatic Test System 泰仕捷科技有限公司 V1.0.1.20220502";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -895,6 +904,8 @@
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Chart_Tdr)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentResult)).EndInit();
@@ -902,8 +913,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_OutPutResult)).EndInit();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_HistoryResult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -912,10 +921,9 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripDropDownButton tsddb_select_mode;
         private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sET2DILToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tDRToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tdrToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deltaLToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsb_DevConnect;
         private System.Windows.Forms.ToolStripButton tsb_DevPOptSet;
@@ -984,13 +992,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Chart_Tdr;
         private System.Windows.Forms.Label lable_test_result;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn mFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn mStep;
         private System.Windows.Forms.DataGridViewTextBoxColumn mDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn mLayer;
+        private System.Windows.Forms.ToolStripLabel tsb_XmlFileName;
     }
 }
 
