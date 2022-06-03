@@ -60,6 +60,8 @@
             this.mDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mLayer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chart_Tdr = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer4 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_CurrentResult = new System.Windows.Forms.DataGridView();
@@ -126,6 +128,11 @@
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_Tdr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentResult)).BeginInit();
@@ -173,7 +180,7 @@
             this.tdrToolStripMenuItem,
             this.deltaLToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.modeToolStripMenuItem.Text = "Mode";
             // 
             // tdrToolStripMenuItem
@@ -181,14 +188,14 @@
             this.tdrToolStripMenuItem.Checked = true;
             this.tdrToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tdrToolStripMenuItem.Name = "tdrToolStripMenuItem";
-            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.tdrToolStripMenuItem.Text = "TDR";
             this.tdrToolStripMenuItem.Click += new System.EventHandler(this.tdrToolStripMenuItem_Click);
             // 
             // deltaLToolStripMenuItem
             // 
             this.deltaLToolStripMenuItem.Name = "deltaLToolStripMenuItem";
-            this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.deltaLToolStripMenuItem.Text = "Delta L";
             this.deltaLToolStripMenuItem.Click += new System.EventHandler(this.deltaLToolStripMenuItem_Click);
             // 
@@ -211,6 +218,7 @@
             this.tsb_DevPOptSet.Name = "tsb_DevPOptSet";
             this.tsb_DevPOptSet.Size = new System.Drawing.Size(108, 36);
             this.tsb_DevPOptSet.Text = "操作设置";
+            this.tsb_DevPOptSet.Click += new System.EventHandler(this.tsb_DevPOptSet_Click);
             // 
             // tsb_DevParamSet
             // 
@@ -263,7 +271,6 @@
             // 
             // tsb_Pnl_ID
             // 
-            this.tsb_Pnl_ID.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.tsb_Pnl_ID.Name = "tsb_Pnl_ID";
             this.tsb_Pnl_ID.Size = new System.Drawing.Size(100, 39);
             this.tsb_Pnl_ID.Text = "0001";
@@ -276,7 +283,6 @@
             // 
             // tsb_Set_id
             // 
-            this.tsb_Set_id.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.tsb_Set_id.Name = "tsb_Set_id";
             this.tsb_Set_id.Size = new System.Drawing.Size(100, 39);
             // 
@@ -312,6 +318,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.Chart_Tdr);
+            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
             this.splitContainer2.Size = new System.Drawing.Size(1197, 517);
             this.splitContainer2.SplitterDistance = 262;
             this.splitContainer2.TabIndex = 0;
@@ -338,7 +345,6 @@
             this.mStep,
             this.mDescription,
             this.mLayer});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -423,6 +429,30 @@
             this.Chart_Tdr.Size = new System.Drawing.Size(931, 517);
             this.Chart_Tdr.TabIndex = 1;
             this.Chart_Tdr.Text = "chart1";
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Location = new System.Drawing.Point(122, 108);
+            this.splitContainer3.Name = "splitContainer3";
+            this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            this.splitContainer3.Size = new System.Drawing.Size(693, 370);
+            this.splitContainer3.SplitterDistance = 240;
+            this.splitContainer3.TabIndex = 0;
+            this.splitContainer3.Visible = false;
+            // 
+            // splitContainer4
+            // 
+            this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer4.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer4.Name = "splitContainer4";
+            this.splitContainer4.Size = new System.Drawing.Size(693, 240);
+            this.splitContainer4.SplitterDistance = 316;
+            this.splitContainer4.TabIndex = 0;
+            this.splitContainer4.Visible = false;
             // 
             // tabControl1
             // 
@@ -906,6 +936,11 @@
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_Tdr)).EndInit();
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
+            this.splitContainer4.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentResult)).EndInit();
@@ -1000,6 +1035,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn mDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn mLayer;
         private System.Windows.Forms.ToolStripLabel tsb_XmlFileName;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainer4;
     }
 }
 

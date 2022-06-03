@@ -154,25 +154,41 @@ namespace TestDeltaL
             //myChart.ChartAreas[0].AxisY.CustomLabels.Add(labely);
         }
 
-
         private void tsb_DevParamSet_Click(object sender, EventArgs e)
         {
-            if (PubConfig.gDeviceType == PubConfig.DeviceType.TDR)
-            {
-                TdrParamSet devParamSet = new TdrParamSet(gdt);
-                devParamSet.ChangeDgv += new TdrParamSet.ChangeDgvHandler(Change_DataGridView);
-                devParamSet.Show();
-            }
-            else if (PubConfig.gDeviceType == PubConfig.DeviceType.DELTAL)
-            {
-                DelealParamSet devParamSet = new DelealParamSet(gdt);
-                devParamSet.ChangeDgv += new DelealParamSet.ChangeDgvHandler(Change_DataGridView);
-                devParamSet.Show();
-            }
+
+
+            //暂时不显示，显示时，需设置dock 为 fill
+            splitContainer3.Visible = false;
+            splitContainer4.Visible = false;
+
+
+
+            //if (PubConfig.gDeviceType == PubConfig.DeviceType.TDR)
+            //{
+            //    TdrParamSet devParamSet = new TdrParamSet(gdt);
+            //    devParamSet.ChangeDgv += new TdrParamSet.ChangeDgvHandler(Change_DataGridView);
+            //    devParamSet.Show();
+            //}
+            //else if (PubConfig.gDeviceType == PubConfig.DeviceType.DELTAL)
+            //{
+            //    DelealParamSet devParamSet = new DelealParamSet(gdt);
+            //    devParamSet.ChangeDgv += new DelealParamSet.ChangeDgvHandler(Change_DataGridView);
+            //    devParamSet.Show();
+            //}
 
 
         }
 
+        private void tsb_DevPOptSet_Click(object sender, EventArgs e)
+        {
+            //暂时不显示，显示时，需设置dock 为 fill
+            Chart_Tdr.Visible = false;
+            splitContainer3.Visible = true;
+            splitContainer4.Visible = true;
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer4.Dock = DockStyle.Fill;
+        }
         public void Change_DataGridView(DataGridView dt)
         {
             if (dgv_CurrentResult.Rows.Count > 0)
@@ -190,5 +206,7 @@ namespace TestDeltaL
         {
             initChart(Chart_Tdr);
         }
+
+
     }
 }
