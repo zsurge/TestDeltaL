@@ -219,6 +219,7 @@
             // dgv_xml_show
             // 
             this.dgv_xml_show.AllowUserToAddRows = false;
+            this.dgv_xml_show.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgv_xml_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_xml_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -392,6 +393,7 @@
             this.dgv_param_show.AllowUserToAddRows = false;
             this.dgv_param_show.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgv_param_show.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgv_param_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_param_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.detail_ID,
@@ -409,15 +411,18 @@
             // 
             // detail_ID
             // 
+            this.detail_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.detail_ID.HeaderText = "ID";
             this.detail_ID.Name = "detail_ID";
             this.detail_ID.ReadOnly = true;
+            this.detail_ID.Width = 42;
             // 
             // Frequency
             // 
             this.Frequency.HeaderText = "Frequency";
             this.Frequency.Name = "Frequency";
             this.Frequency.ReadOnly = true;
+            this.Frequency.Width = 84;
             // 
             // Loss_lower_limit
             // 
@@ -431,22 +436,24 @@
             this.Loss_Upper_limit.HeaderText = "Loss Upper limit";
             this.Loss_Upper_limit.Name = "Loss_Upper_limit";
             this.Loss_Upper_limit.ReadOnly = true;
+            this.Loss_Upper_limit.Width = 115;
             // 
             // Uncertainty
             // 
             this.Uncertainty.HeaderText = "Uncertainty(%)";
             this.Uncertainty.Name = "Uncertainty";
             this.Uncertainty.ReadOnly = true;
+            this.Uncertainty.Width = 114;
             // 
             // Difference
             // 
             this.Difference.HeaderText = "Difference";
             this.Difference.Name = "Difference";
             this.Difference.ReadOnly = true;
+            this.Difference.Width = 90;
             // 
             // ID
             // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
@@ -457,60 +464,70 @@
             this.Step.HeaderText = "Step";
             this.Step.Name = "Step";
             this.Step.ReadOnly = true;
+            this.Step.Width = 54;
             // 
             // Method
             // 
             this.Method.HeaderText = "Method";
             this.Method.Name = "Method";
             this.Method.ReadOnly = true;
+            this.Method.Width = 66;
             // 
             // Layer
             // 
             this.Layer.HeaderText = "Layer";
             this.Layer.Name = "Layer";
             this.Layer.ReadOnly = true;
+            this.Layer.Width = 60;
             // 
             // Description
             // 
             this.Description.HeaderText = "Description";
             this.Description.Name = "Description";
             this.Description.ReadOnly = true;
+            this.Description.Width = 96;
             // 
             // Short_Length
             // 
             this.Short_Length.HeaderText = "Short_Length";
             this.Short_Length.Name = "Short_Length";
             this.Short_Length.ReadOnly = true;
+            this.Short_Length.Width = 102;
             // 
             // Medium_Length
             // 
             this.Medium_Length.HeaderText = "Medium_Length";
             this.Medium_Length.Name = "Medium_Length";
             this.Medium_Length.ReadOnly = true;
+            this.Medium_Length.Width = 108;
             // 
             // Long_Length
             // 
             this.Long_Length.HeaderText = "Long_Length";
             this.Long_Length.Name = "Long_Length";
             this.Long_Length.ReadOnly = true;
+            this.Long_Length.Width = 96;
             // 
             // RecordPath
             // 
             this.RecordPath.HeaderText = "RecordPath";
             this.RecordPath.Name = "RecordPath";
             this.RecordPath.ReadOnly = true;
+            this.RecordPath.Width = 90;
             // 
             // SaveCurve
             // 
             this.SaveCurve.HeaderText = "SaveCurve";
             this.SaveCurve.Name = "SaveCurve";
             this.SaveCurve.ReadOnly = true;
+            this.SaveCurve.Width = 84;
             // 
             // SaveImage
             // 
             this.SaveImage.HeaderText = "SaveImage";
             this.SaveImage.Name = "SaveImage";
             this.SaveImage.ReadOnly = true;
+            this.SaveImage.Width = 84;
             // 
             // DelealParamSet
             // 

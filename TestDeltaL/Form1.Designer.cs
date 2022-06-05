@@ -35,6 +35,15 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsddb_select_mode = new System.Windows.Forms.ToolStripDropDownButton();
             this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,6 +71,9 @@
             this.Chart_Tdr = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
+            this.chart_short_medium = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart_medium_long = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart_difference = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgv_CurrentResult = new System.Windows.Forms.DataGridView();
@@ -130,9 +142,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.Chart_Tdr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).BeginInit();
+            this.splitContainer4.Panel1.SuspendLayout();
+            this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_short_medium)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_medium_long)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_difference)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentResult)).BeginInit();
@@ -271,6 +289,7 @@
             // 
             // tsb_Pnl_ID
             // 
+            this.tsb_Pnl_ID.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.tsb_Pnl_ID.Name = "tsb_Pnl_ID";
             this.tsb_Pnl_ID.Size = new System.Drawing.Size(100, 39);
             this.tsb_Pnl_ID.Text = "0001";
@@ -283,6 +302,7 @@
             // 
             // tsb_Set_id
             // 
+            this.tsb_Set_id.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F);
             this.tsb_Set_id.Name = "tsb_Set_id";
             this.tsb_Set_id.Size = new System.Drawing.Size(100, 39);
             // 
@@ -397,10 +417,9 @@
             // 
             chartArea1.Name = "ChartArea1";
             this.Chart_Tdr.ChartAreas.Add(chartArea1);
-            this.Chart_Tdr.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.Chart_Tdr.Legends.Add(legend1);
-            this.Chart_Tdr.Location = new System.Drawing.Point(0, 0);
+            this.Chart_Tdr.Location = new System.Drawing.Point(18, 18);
             this.Chart_Tdr.Name = "Chart_Tdr";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -426,7 +445,7 @@
             this.Chart_Tdr.Series.Add(series2);
             this.Chart_Tdr.Series.Add(series3);
             this.Chart_Tdr.Series.Add(series4);
-            this.Chart_Tdr.Size = new System.Drawing.Size(931, 517);
+            this.Chart_Tdr.Size = new System.Drawing.Size(229, 139);
             this.Chart_Tdr.TabIndex = 1;
             this.Chart_Tdr.Text = "chart1";
             // 
@@ -439,6 +458,10 @@
             // splitContainer3.Panel1
             // 
             this.splitContainer3.Panel1.Controls.Add(this.splitContainer4);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.chart_difference);
             this.splitContainer3.Size = new System.Drawing.Size(693, 370);
             this.splitContainer3.SplitterDistance = 240;
             this.splitContainer3.TabIndex = 0;
@@ -449,10 +472,63 @@
             this.splitContainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer4.Location = new System.Drawing.Point(0, 0);
             this.splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            this.splitContainer4.Panel1.Controls.Add(this.chart_short_medium);
+            // 
+            // splitContainer4.Panel2
+            // 
+            this.splitContainer4.Panel2.Controls.Add(this.chart_medium_long);
             this.splitContainer4.Size = new System.Drawing.Size(693, 240);
             this.splitContainer4.SplitterDistance = 316;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.Visible = false;
+            // 
+            // chart_short_medium
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chart_short_medium.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart_short_medium.Legends.Add(legend2);
+            this.chart_short_medium.Location = new System.Drawing.Point(15, 22);
+            this.chart_short_medium.Name = "chart_short_medium";
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chart_short_medium.Series.Add(series5);
+            this.chart_short_medium.Size = new System.Drawing.Size(247, 165);
+            this.chart_short_medium.TabIndex = 0;
+            // 
+            // chart_medium_long
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart_medium_long.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart_medium_long.Legends.Add(legend3);
+            this.chart_medium_long.Location = new System.Drawing.Point(13, 22);
+            this.chart_medium_long.Name = "chart_medium_long";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            this.chart_medium_long.Series.Add(series6);
+            this.chart_medium_long.Size = new System.Drawing.Size(198, 174);
+            this.chart_medium_long.TabIndex = 0;
+            // 
+            // chart_difference
+            // 
+            chartArea4.Name = "ChartArea1";
+            this.chart_difference.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart_difference.Legends.Add(legend4);
+            this.chart_difference.Location = new System.Drawing.Point(15, 3);
+            this.chart_difference.Name = "chart_difference";
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chart_difference.Series.Add(series7);
+            this.chart_difference.Size = new System.Drawing.Size(318, 108);
+            this.chart_difference.TabIndex = 0;
             // 
             // tabControl1
             // 
@@ -937,10 +1013,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_Tdr)).EndInit();
             this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.splitContainer4.Panel1.ResumeLayout(false);
+            this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart_short_medium)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_medium_long)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart_difference)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CurrentResult)).EndInit();
@@ -1037,6 +1119,9 @@
         private System.Windows.Forms.ToolStripLabel tsb_XmlFileName;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.SplitContainer splitContainer4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_short_medium;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_medium_long;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart_difference;
     }
 }
 
