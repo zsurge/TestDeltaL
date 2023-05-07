@@ -189,7 +189,7 @@
             this.tsddb_select_mode.Image = ((System.Drawing.Image)(resources.GetObject("tsddb_select_mode.Image")));
             this.tsddb_select_mode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddb_select_mode.Name = "tsddb_select_mode";
-            this.tsddb_select_mode.Size = new System.Drawing.Size(69, 36);
+            this.tsddb_select_mode.Size = new System.Drawing.Size(68, 36);
             this.tsddb_select_mode.Text = "系统";
             // 
             // modeToolStripMenuItem
@@ -198,7 +198,7 @@
             this.tdrToolStripMenuItem,
             this.deltaLToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.modeToolStripMenuItem.Text = "Mode";
             // 
             // tdrToolStripMenuItem
@@ -206,14 +206,14 @@
             this.tdrToolStripMenuItem.Checked = true;
             this.tdrToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tdrToolStripMenuItem.Name = "tdrToolStripMenuItem";
-            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.tdrToolStripMenuItem.Text = "TDR";
             this.tdrToolStripMenuItem.Click += new System.EventHandler(this.tdrToolStripMenuItem_Click);
             // 
             // deltaLToolStripMenuItem
             // 
             this.deltaLToolStripMenuItem.Name = "deltaLToolStripMenuItem";
-            this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.deltaLToolStripMenuItem.Text = "Delta L";
             this.deltaLToolStripMenuItem.Click += new System.EventHandler(this.deltaLToolStripMenuItem_Click);
             // 
@@ -224,7 +224,7 @@
             this.tsb_DevConnect.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_DevConnect.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_DevConnect.Name = "tsb_DevConnect";
-            this.tsb_DevConnect.Size = new System.Drawing.Size(108, 36);
+            this.tsb_DevConnect.Size = new System.Drawing.Size(107, 36);
             this.tsb_DevConnect.Text = "仪器设置";
             // 
             // tsb_DevPOptSet
@@ -234,7 +234,7 @@
             this.tsb_DevPOptSet.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_DevPOptSet.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_DevPOptSet.Name = "tsb_DevPOptSet";
-            this.tsb_DevPOptSet.Size = new System.Drawing.Size(108, 36);
+            this.tsb_DevPOptSet.Size = new System.Drawing.Size(107, 36);
             this.tsb_DevPOptSet.Text = "操作设置";
             this.tsb_DevPOptSet.Click += new System.EventHandler(this.tsb_DevPOptSet_Click);
             // 
@@ -245,7 +245,7 @@
             this.tsb_DevParamSet.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_DevParamSet.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_DevParamSet.Name = "tsb_DevParamSet";
-            this.tsb_DevParamSet.Size = new System.Drawing.Size(109, 36);
+            this.tsb_DevParamSet.Size = new System.Drawing.Size(108, 36);
             this.tsb_DevParamSet.Text = "量测参数";
             this.tsb_DevParamSet.Click += new System.EventHandler(this.tsb_DevParamSet_Click);
             // 
@@ -257,7 +257,7 @@
             this.tsb_GetTestIndex.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_GetTestIndex.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_GetTestIndex.Name = "tsb_GetTestIndex";
-            this.tsb_GetTestIndex.Size = new System.Drawing.Size(108, 36);
+            this.tsb_GetTestIndex.Size = new System.Drawing.Size(107, 36);
             this.tsb_GetTestIndex.Text = "开路定义";
             // 
             // tsb_StartTest
@@ -268,7 +268,7 @@
             this.tsb_StartTest.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_StartTest.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_StartTest.Name = "tsb_StartTest";
-            this.tsb_StartTest.Size = new System.Drawing.Size(76, 36);
+            this.tsb_StartTest.Size = new System.Drawing.Size(75, 36);
             this.tsb_StartTest.Text = "量测";
             // 
             // toolStripSeparator1
@@ -419,7 +419,7 @@
             this.Chart_Tdr.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.Chart_Tdr.Legends.Add(legend1);
-            this.Chart_Tdr.Location = new System.Drawing.Point(18, 18);
+            this.Chart_Tdr.Location = new System.Drawing.Point(65, 55);
             this.Chart_Tdr.Name = "Chart_Tdr";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -445,13 +445,14 @@
             this.Chart_Tdr.Series.Add(series2);
             this.Chart_Tdr.Series.Add(series3);
             this.Chart_Tdr.Series.Add(series4);
-            this.Chart_Tdr.Size = new System.Drawing.Size(229, 139);
+            this.Chart_Tdr.Size = new System.Drawing.Size(142, 71);
             this.Chart_Tdr.TabIndex = 1;
             this.Chart_Tdr.Text = "chart1";
             // 
             // splitContainer3
             // 
-            this.splitContainer3.Location = new System.Drawing.Point(122, 108);
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
             this.splitContainer3.Name = "splitContainer3";
             this.splitContainer3.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -462,8 +463,8 @@
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.chart_difference);
-            this.splitContainer3.Size = new System.Drawing.Size(693, 370);
-            this.splitContainer3.SplitterDistance = 240;
+            this.splitContainer3.Size = new System.Drawing.Size(931, 517);
+            this.splitContainer3.SplitterDistance = 335;
             this.splitContainer3.TabIndex = 0;
             this.splitContainer3.Visible = false;
             // 
@@ -480,8 +481,8 @@
             // splitContainer4.Panel2
             // 
             this.splitContainer4.Panel2.Controls.Add(this.chart_medium_long);
-            this.splitContainer4.Size = new System.Drawing.Size(693, 240);
-            this.splitContainer4.SplitterDistance = 316;
+            this.splitContainer4.Size = new System.Drawing.Size(931, 335);
+            this.splitContainer4.SplitterDistance = 424;
             this.splitContainer4.TabIndex = 0;
             this.splitContainer4.Visible = false;
             // 
@@ -489,45 +490,51 @@
             // 
             chartArea2.Name = "ChartArea1";
             this.chart_short_medium.ChartAreas.Add(chartArea2);
+            this.chart_short_medium.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
             this.chart_short_medium.Legends.Add(legend2);
-            this.chart_short_medium.Location = new System.Drawing.Point(15, 22);
+            this.chart_short_medium.Location = new System.Drawing.Point(0, 0);
             this.chart_short_medium.Name = "chart_short_medium";
             series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series5.Legend = "Legend1";
             series5.Name = "Series1";
             this.chart_short_medium.Series.Add(series5);
-            this.chart_short_medium.Size = new System.Drawing.Size(247, 165);
+            this.chart_short_medium.Size = new System.Drawing.Size(424, 335);
             this.chart_short_medium.TabIndex = 0;
             // 
             // chart_medium_long
             // 
             chartArea3.Name = "ChartArea1";
             this.chart_medium_long.ChartAreas.Add(chartArea3);
+            this.chart_medium_long.Dock = System.Windows.Forms.DockStyle.Fill;
             legend3.Name = "Legend1";
             this.chart_medium_long.Legends.Add(legend3);
-            this.chart_medium_long.Location = new System.Drawing.Point(13, 22);
+            this.chart_medium_long.Location = new System.Drawing.Point(0, 0);
             this.chart_medium_long.Name = "chart_medium_long";
             series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series6.Legend = "Legend1";
             series6.Name = "Series1";
             this.chart_medium_long.Series.Add(series6);
-            this.chart_medium_long.Size = new System.Drawing.Size(198, 174);
+            this.chart_medium_long.Size = new System.Drawing.Size(503, 335);
             this.chart_medium_long.TabIndex = 0;
             // 
             // chart_difference
             // 
             chartArea4.Name = "ChartArea1";
             this.chart_difference.ChartAreas.Add(chartArea4);
+            this.chart_difference.Dock = System.Windows.Forms.DockStyle.Fill;
             legend4.Name = "Legend1";
             this.chart_difference.Legends.Add(legend4);
-            this.chart_difference.Location = new System.Drawing.Point(15, 3);
+            this.chart_difference.Location = new System.Drawing.Point(0, 0);
             this.chart_difference.Name = "chart_difference";
             series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series7.Legend = "Legend1";
             series7.Name = "Series1";
             this.chart_difference.Series.Add(series7);
-            this.chart_difference.Size = new System.Drawing.Size(318, 108);
+            this.chart_difference.Size = new System.Drawing.Size(931, 178);
             this.chart_difference.TabIndex = 0;
             // 
             // tabControl1

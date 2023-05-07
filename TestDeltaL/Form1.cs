@@ -24,6 +24,20 @@ namespace TestDeltaL
             InitializeComponent();
         }
 
+        private void update_chart()
+        {
+            if (PubConfig.gDeviceType == PubConfig.DeviceType.TDR)
+            {
+                initChart(Chart_Tdr);
+            }
+            else if (PubConfig.gDeviceType == PubConfig.DeviceType.DELTAL)
+            {
+                init_deltal_chart();
+            }
+        }
+
+
+
         private void deltaLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
@@ -36,7 +50,8 @@ namespace TestDeltaL
             {
                 tsb_GetTestIndex.Visible = false;
                 tsb_StartTest.Visible = false;
-                PubConfig.gDeviceType = PubConfig.DeviceType.DELTAL;        
+                PubConfig.gDeviceType = PubConfig.DeviceType.DELTAL;
+                update_chart();
             }
             else
             {
@@ -56,6 +71,7 @@ namespace TestDeltaL
                 tsb_GetTestIndex.Visible = true;
                 tsb_StartTest.Visible = true;
                 PubConfig.gDeviceType = PubConfig.DeviceType.TDR;
+                update_chart();
             }
             else
             {
@@ -63,8 +79,15 @@ namespace TestDeltaL
             }
         }
 
-        public void initChart(Chart myChart)
+        private void initChart(Chart myChart)
         {
+            splitContainer2.Panel2.Controls.Add(Chart_Tdr);
+            Chart_Tdr.Visible = true;
+            Chart_Tdr.Dock = DockStyle.Fill;
+
+            splitContainer3.Visible = false;
+            splitContainer4.Visible = false;
+
             foreach (var series in myChart.Series)
             {
                 series.Points.Clear();
@@ -156,7 +179,7 @@ namespace TestDeltaL
             //myChart.ChartAreas[0].AxisY.CustomLabels.Add(labely);
         }
 
-        public void initChart_3layer(Chart myChart,string showText,string xText,string yText)
+        private void initChart_3layer(Chart myChart,string showText,string xText,string yText)
         {
             foreach (var series in myChart.Series)
             {
@@ -243,6 +266,20 @@ namespace TestDeltaL
             //myChart.ChartAreas[0].AxisY.CustomLabels.Add(labely);
         }
 
+        private void init_deltal_chart()
+        {
+            Chart_Tdr.Visible = false;
+            splitContainer3.Visible = true;
+            splitContainer4.Visible = true;
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer4.Dock = DockStyle.Fill;
+
+
+            initChart_3layer(chart_short_medium, "short", "short_medium", "Insertion Loss per Inch(dB)");
+            initChart_3layer(chart_medium_long, "medium", "medium_long", "Insertion Loss per Inch(dB)");
+            initChart_3layer(chart_difference, "difference", "difference", "Error Percentage");
+        }
+
         private void tsb_DevParamSet_Click(object sender, EventArgs e)
         {
             //暂时不显示，显示时，需设置dock 为 fill
@@ -266,16 +303,7 @@ namespace TestDeltaL
         private void tsb_DevPOptSet_Click(object sender, EventArgs e)
         {
             //暂时不显示，显示时，需设置dock 为 fill
-            Chart_Tdr.Visible = false;
-            splitContainer3.Visible = true;
-            splitContainer4.Visible = true;
-            splitContainer3.Dock = DockStyle.Fill;
-            splitContainer4.Dock = DockStyle.Fill;
-
-
-            initChart_3layer(chart_short_medium,"short","short_medium", "Insertion Loss per Inch(dB)");
-            initChart_3layer(chart_medium_long, "medium", "medium_long", "Insertion Loss per Inch(dB)");
-            initChart_3layer(chart_difference, "difference", "difference", "Error Percentage");
+            init_deltal_chart();
 
         }
         public void Change_DataGridView(DataGridView dt)
@@ -293,7 +321,8 @@ namespace TestDeltaL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            initChart(Chart_Tdr);
+            //initChart(Chart_Tdr);
+            init_deltal_chart();
         }
 
 
