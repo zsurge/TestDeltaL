@@ -81,12 +81,13 @@ namespace TestDeltaL
 
         private void initChart(Chart myChart)
         {
-            splitContainer2.Panel2.Controls.Add(Chart_Tdr);
+            splitContainer3.Visible = true;
+            splitContainer4.Visible = false;
+            splitContainer5.Visible = false;
+
+            splitContainer3.Panel2.Controls.Add(Chart_Tdr);
             Chart_Tdr.Visible = true;
             Chart_Tdr.Dock = DockStyle.Fill;
-
-            splitContainer3.Visible = false;
-            splitContainer4.Visible = false;
 
             foreach (var series in myChart.Series)
             {
@@ -108,8 +109,8 @@ namespace TestDeltaL
             //myChart.Series[0].IsVisibleInLegend = false;
             //myChart.Series[0].LegendText = "TDR Curve";
 
-            myChart.Series[0].ChartType = SeriesChartType.Spline;
 
+            myChart.Series[0].ChartType = SeriesChartType.Spline;
 
             myChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false; //仅不显示x轴方向的网格线
             myChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false; //仅不显示y轴方向的网格线
@@ -156,7 +157,14 @@ namespace TestDeltaL
             stripLineLimit.IntervalOffset = 0;
             stripLineLimit.BackColor = Color.White;
             stripLineLimit.BorderDashStyle = ChartDashStyle.Dash;
+            stripLineLimit.TextAlignment = StringAlignment.Near; //居中对齐
+            stripLineLimit.TextOrientation = TextOrientation.Horizontal; //横向显示
             myChart.ChartAreas[0].AxisX.StripLines.Add(stripLineLimit);
+
+            //stripLineLimit.TextAlignment = StringAlignment.Center;
+            //stripLineLimit.TextLineAlignment = StringAlignment.Near;
+
+
 
             StripLine stripLineLimitY = new StripLine();
             stripLineLimitY.Text = "";
@@ -166,6 +174,8 @@ namespace TestDeltaL
             stripLineLimitY.IntervalOffset = 0;
             stripLineLimitY.BackColor = Color.White;
             stripLineLimitY.BorderDashStyle = ChartDashStyle.Dash;
+            stripLineLimitY.TextAlignment = StringAlignment.Far; //居中对齐
+            stripLineLimitY.TextOrientation = TextOrientation.Horizontal; //横向显示
             myChart.ChartAreas[0].AxisY.StripLines.Add(stripLineLimitY);
 
             //CustomLabel label = new CustomLabel();
@@ -271,8 +281,10 @@ namespace TestDeltaL
             Chart_Tdr.Visible = false;
             splitContainer3.Visible = true;
             splitContainer4.Visible = true;
+            splitContainer5.Visible = true;
             splitContainer3.Dock = DockStyle.Fill;
             splitContainer4.Dock = DockStyle.Fill;
+            splitContainer5.Dock = DockStyle.Fill;
 
 
             initChart_3layer(chart_short_medium, "short", "short_medium", "Insertion Loss per Inch(dB)");
@@ -302,9 +314,8 @@ namespace TestDeltaL
 
         private void tsb_DevPOptSet_Click(object sender, EventArgs e)
         {
-            //暂时不显示，显示时，需设置dock 为 fill
-            init_deltal_chart();
-
+            DevOptSet devOptSet = new DevOptSet();
+            devOptSet.Show();
         }
         public void Change_DataGridView(DataGridView dt)
         {
@@ -321,8 +332,8 @@ namespace TestDeltaL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //initChart(Chart_Tdr);
-            init_deltal_chart();
+            initChart(Chart_Tdr);
+            //init_deltal_chart();
         }
 
 

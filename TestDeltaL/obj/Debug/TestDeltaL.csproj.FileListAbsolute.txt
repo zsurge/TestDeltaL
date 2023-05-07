@@ -31,3 +31,4 @@ E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CoreCompileInputs.c
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CopyComplete
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb
+E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevOptSet.resources

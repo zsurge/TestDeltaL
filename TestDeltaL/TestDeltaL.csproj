@@ -62,6 +62,12 @@
     <Compile Include="DelealParamSet.Designer.cs">
       <DependentUpon>DelealParamSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevOptSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevOptSet.Designer.cs">
+      <DependentUpon>DevOptSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </Compile>
     <EmbeddedResource Include="DelealParamSet.resx">
       <DependentUpon>DelealParamSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevOptSet.resx">
+      <DependentUpon>DevOptSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
