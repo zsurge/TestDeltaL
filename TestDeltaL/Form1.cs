@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,54 @@ namespace TestDeltaL
         {
             InitializeComponent();
         }
+        //测试数据目录，该目录下有子目录
+        public string fileDir = Environment.CurrentDirectory + "\\MeasureData";
+        public string configDir = Environment.CurrentDirectory + "\\Config";
+        public string autoSaveDir = Environment.CurrentDirectory + "\\AutoSave";
+        public string historyDir = Environment.CurrentDirectory + "\\MeasureData\\History";
+        public string imageDir = Environment.CurrentDirectory + "\\AutoSave\\Image";
+        public string CurveDir = Environment.CurrentDirectory + "\\AutoSave\\Curve";
+        public string reportDir = Environment.CurrentDirectory + "\\MeasureData\\Report";
+
+        //建立默认文件夹
+        public void CreateDefaultDir()
+        {
+            if (!Directory.Exists(fileDir))
+            {
+                Directory.CreateDirectory(fileDir);
+            }
+
+            if (!Directory.Exists(historyDir))
+            {
+                Directory.CreateDirectory(historyDir);
+            }
+
+            if (!Directory.Exists(reportDir))
+            {
+                Directory.CreateDirectory(reportDir);
+            }
+
+            if (!Directory.Exists(configDir))
+            {
+                Directory.CreateDirectory(configDir);
+            }
+
+            if (!Directory.Exists(autoSaveDir))
+            {
+                Directory.CreateDirectory(autoSaveDir);
+            }
+
+            if (!Directory.Exists(imageDir))
+            {
+                Directory.CreateDirectory(imageDir);
+            }
+
+            if (!Directory.Exists(CurveDir))
+            {
+                Directory.CreateDirectory(CurveDir);
+            }
+        }
+
 
         private void update_chart()
         {
@@ -115,6 +164,10 @@ namespace TestDeltaL
             myChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false; //仅不显示x轴方向的网格线
             myChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false; //仅不显示y轴方向的网格线
 
+            //隐藏X,Y轴上的主要刻度标识(小黑线)
+            myChart.ChartAreas["ChartArea1"].Axes[0].MajorTickMark.Enabled = false;
+            myChart.ChartAreas["ChartArea1"].Axes[1].MajorTickMark.Enabled = false;
+
             //背景灰色
             myChart.BackColor = Color.Gray;
             myChart.ChartAreas[0].BackColor = Color.Gray;
@@ -131,7 +184,7 @@ namespace TestDeltaL
             myChart.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Gray;//刻度值颜色
             myChart.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Gray;//刻度值颜色
 
-            //条黄色
+            //线条黄色
             myChart.Series[0].Color = Color.Yellow; //线条颜色
 
             //网格线颜色白色
@@ -147,13 +200,18 @@ namespace TestDeltaL
             myChart.ChartAreas[0].AxisY.Maximum = 3000;//设置Y坐标最大值
             myChart.ChartAreas[0].AxisY.Minimum = -3000;
 
-            myChart.Series[0].Points.AddXY(10, 10);
+            myChart.Series[0].Points.AddXY(0, 0);
+
+            //myChart.Titles[0].Text = "Uncertainty Report(L1-L2)";
+            //myChart.ChartAreas[0].Axes[0].Title = "Frequency(GHz)";
+            //myChart.ChartAreas[0].Axes[1].Title = "Insertion Loss per Inch(dB)";
+       
 
             StripLine stripLineLimit = new StripLine();
             stripLineLimit.Text = "";
             stripLineLimit.Interval = 0;
             stripLineLimit.StripWidth = 0.1;
-            stripLineLimit.Text = "Uncertainty Report(L1-L2)";
+            //stripLineLimit.Text = "Uncertainty Report(L1-L2)";
             stripLineLimit.IntervalOffset = 0;
             stripLineLimit.BackColor = Color.White;
             stripLineLimit.BorderDashStyle = ChartDashStyle.Dash;
@@ -161,16 +219,11 @@ namespace TestDeltaL
             stripLineLimit.TextOrientation = TextOrientation.Horizontal; //横向显示
             myChart.ChartAreas[0].AxisX.StripLines.Add(stripLineLimit);
 
-            //stripLineLimit.TextAlignment = StringAlignment.Center;
-            //stripLineLimit.TextLineAlignment = StringAlignment.Near;
-
-
-
             StripLine stripLineLimitY = new StripLine();
             stripLineLimitY.Text = "";
             stripLineLimitY.Interval = 0;
             stripLineLimitY.StripWidth = 0.1;
-            stripLineLimitY.Text = "Insertion Loss per Inch(dB)";
+            //stripLineLimitY.Text = "Insertion Loss per Inch(dB)";
             stripLineLimitY.IntervalOffset = 0;
             stripLineLimitY.BackColor = Color.White;
             stripLineLimitY.BorderDashStyle = ChartDashStyle.Dash;
@@ -197,7 +250,7 @@ namespace TestDeltaL
             }
 
             myChart.Dock = DockStyle.Fill;
-            myChart.Series[0].LegendText = showText;
+            //myChart.Series[0].LegendText = showText;
             myChart.Series[0].ChartType = SeriesChartType.Spline;
             myChart.Series[0].BorderWidth = 2;
      
@@ -207,6 +260,9 @@ namespace TestDeltaL
 
             myChart.Series[0].ChartType = SeriesChartType.Spline;
 
+            //隐藏X,Y轴上的主要刻度标识(小黑线)
+            myChart.ChartAreas["ChartArea1"].Axes[0].MajorTickMark.Enabled = false;
+            myChart.ChartAreas["ChartArea1"].Axes[1].MajorTickMark.Enabled = false;
 
             myChart.ChartAreas["ChartArea1"].AxisX.MajorGrid.Enabled = false; //仅不显示x轴方向的网格线
             myChart.ChartAreas["ChartArea1"].AxisY.MajorGrid.Enabled = false; //仅不显示y轴方向的网格线
@@ -243,13 +299,17 @@ namespace TestDeltaL
             myChart.ChartAreas[0].AxisY.Maximum = 3000;//设置Y坐标最大值
             myChart.ChartAreas[0].AxisY.Minimum = -3000;
 
+            myChart.Titles[0].Text = showText;
+            myChart.ChartAreas[0].Axes[0].Title = xText;
+            myChart.ChartAreas[0].Axes[1].Title = yText;
+
             myChart.Series[0].Points.AddXY(10, 10);
 
             StripLine stripLineLimit = new StripLine();
             stripLineLimit.Text = "";
             stripLineLimit.Interval = 0;
             stripLineLimit.StripWidth = 0.1;
-            stripLineLimit.Text = xText;
+            //stripLineLimit.Text = xText;
             stripLineLimit.IntervalOffset = 0;
             stripLineLimit.BackColor = Color.White;
             stripLineLimit.BorderDashStyle = ChartDashStyle.Dash;
@@ -259,7 +319,7 @@ namespace TestDeltaL
             stripLineLimitY.Text = "";
             stripLineLimitY.Interval = 0;
             stripLineLimitY.StripWidth = 0.1;
-            stripLineLimitY.Text = yText;
+            //stripLineLimitY.Text = yText;
             stripLineLimitY.IntervalOffset = 0;
             stripLineLimitY.BackColor = Color.White;
             stripLineLimitY.BorderDashStyle = ChartDashStyle.Dash;
@@ -287,9 +347,9 @@ namespace TestDeltaL
             splitContainer5.Dock = DockStyle.Fill;
 
 
-            initChart_3layer(chart_short_medium, "short", "short_medium", "Insertion Loss per Inch(dB)");
-            initChart_3layer(chart_medium_long, "medium", "medium_long", "Insertion Loss per Inch(dB)");
-            initChart_3layer(chart_difference, "difference", "difference", "Error Percentage");
+            initChart_3layer(chart_short_medium, "Short_Medium", "Frequency(GHz)", "Insertion Loss per Inch(dB)");
+            initChart_3layer(chart_medium_long, "Medium_Long", "Frequency(GHz)", "Insertion Loss per Inch(dB)");
+            initChart_3layer(chart_difference, "Difference", "Frequency(GHz)", "Error Percentage");
         }
 
         private void tsb_DevParamSet_Click(object sender, EventArgs e)
@@ -332,6 +392,7 @@ namespace TestDeltaL
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CreateDefaultDir();
             initChart(Chart_Tdr);
             //init_deltal_chart();
         }

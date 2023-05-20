@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.radio_sn_manual = new System.Windows.Forms.RadioButton();
+            this.radio_sn_auto = new System.Windows.Forms.RadioButton();
             this.tx_sn_begin = new System.Windows.Forms.TextBox();
             this.tx_sn_prefix = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,18 +63,16 @@
             this.radio_port_24 = new System.Windows.Forms.RadioButton();
             this.radio_port_13 = new System.Windows.Forms.RadioButton();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.linkLabel_loss_def_value = new System.Windows.Forms.LinkLabel();
+            this.tx_offset = new System.Windows.Forms.TextBox();
+            this.radio_offset_def = new System.Windows.Forms.RadioButton();
+            this.radio_offset_auto = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_freq_limit = new System.Windows.Forms.DataGridView();
             this.Loss = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Freq_4G = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Freq_8G = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Freq_12G = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radio_sn_manual = new System.Windows.Forms.RadioButton();
-            this.radio_sn_auto = new System.Windows.Forms.RadioButton();
-            this.linkLabel_loss_def_value = new System.Windows.Forms.LinkLabel();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,7 +82,7 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_freq_limit)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox5
@@ -99,6 +99,28 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "待测物流水号";
+            // 
+            // radio_sn_manual
+            // 
+            this.radio_sn_manual.AutoSize = true;
+            this.radio_sn_manual.Location = new System.Drawing.Point(12, 20);
+            this.radio_sn_manual.Name = "radio_sn_manual";
+            this.radio_sn_manual.Size = new System.Drawing.Size(47, 16);
+            this.radio_sn_manual.TabIndex = 3;
+            this.radio_sn_manual.Text = "手动";
+            this.radio_sn_manual.UseVisualStyleBackColor = true;
+            // 
+            // radio_sn_auto
+            // 
+            this.radio_sn_auto.AutoSize = true;
+            this.radio_sn_auto.Checked = true;
+            this.radio_sn_auto.Location = new System.Drawing.Point(131, 19);
+            this.radio_sn_auto.Name = "radio_sn_auto";
+            this.radio_sn_auto.Size = new System.Drawing.Size(47, 16);
+            this.radio_sn_auto.TabIndex = 2;
+            this.radio_sn_auto.TabStop = true;
+            this.radio_sn_auto.Text = "自动";
+            this.radio_sn_auto.UseVisualStyleBackColor = true;
             // 
             // tx_sn_begin
             // 
@@ -161,6 +183,7 @@
             this.radio_save_param.TabStop = true;
             this.radio_save_param.Text = "按量测参数";
             this.radio_save_param.UseVisualStyleBackColor = true;
+       
             // 
             // cmbo_format
             // 
@@ -184,6 +207,7 @@
             this.radio_save_date.TabIndex = 6;
             this.radio_save_date.Text = "按日期";
             this.radio_save_date.UseVisualStyleBackColor = true;
+            this.radio_save_date.CheckedChanged += new System.EventHandler(this.radio_save_date_CheckedChanged);
             // 
             // tx_export_report
             // 
@@ -315,6 +339,7 @@
             this.btn_opt_cancel.TabIndex = 7;
             this.btn_opt_cancel.Text = "取消";
             this.btn_opt_cancel.UseVisualStyleBackColor = true;
+            this.btn_opt_cancel.Click += new System.EventHandler(this.btn_opt_cancel_Click);
             // 
             // btn_opt_ok
             // 
@@ -324,6 +349,7 @@
             this.btn_opt_ok.TabIndex = 8;
             this.btn_opt_ok.Text = "确定";
             this.btn_opt_ok.UseVisualStyleBackColor = true;
+            this.btn_opt_ok.Click += new System.EventHandler(this.btn_opt_ok_Click);
             // 
             // groupBox3
             // 
@@ -427,9 +453,9 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.linkLabel_loss_def_value);
-            this.groupBox8.Controls.Add(this.textBox1);
-            this.groupBox8.Controls.Add(this.radioButton7);
-            this.groupBox8.Controls.Add(this.radioButton8);
+            this.groupBox8.Controls.Add(this.tx_offset);
+            this.groupBox8.Controls.Add(this.radio_offset_def);
+            this.groupBox8.Controls.Add(this.radio_offset_auto);
             this.groupBox8.Location = new System.Drawing.Point(147, 129);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(129, 102);
@@ -437,39 +463,53 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Insertion Loss Y";
             // 
-            // radioButton7
+            // linkLabel_loss_def_value
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(16, 44);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(59, 16);
-            this.radioButton7.TabIndex = 1;
-            this.radioButton7.Text = "自定义";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.linkLabel_loss_def_value.AutoSize = true;
+            this.linkLabel_loss_def_value.Enabled = false;
+            this.linkLabel_loss_def_value.Location = new System.Drawing.Point(81, 46);
+            this.linkLabel_loss_def_value.Name = "linkLabel_loss_def_value";
+            this.linkLabel_loss_def_value.Size = new System.Drawing.Size(29, 12);
+            this.linkLabel_loss_def_value.TabIndex = 11;
+            this.linkLabel_loss_def_value.TabStop = true;
+            this.linkLabel_loss_def_value.Text = "预设";
+            this.linkLabel_loss_def_value.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_loss_def_value_LinkClicked);
             // 
-            // radioButton8
+            // tx_offset
             // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Checked = true;
-            this.radioButton8.Location = new System.Drawing.Point(16, 20);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(47, 16);
-            this.radioButton8.TabIndex = 0;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "自动";
-            this.radioButton8.UseVisualStyleBackColor = true;
+            this.tx_offset.Enabled = false;
+            this.tx_offset.Location = new System.Drawing.Point(16, 68);
+            this.tx_offset.Name = "tx_offset";
+            this.tx_offset.Size = new System.Drawing.Size(67, 21);
+            this.tx_offset.TabIndex = 10;
             // 
-            // textBox1
+            // radio_offset_def
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(67, 21);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.Text = "3";
+            this.radio_offset_def.AutoSize = true;
+            this.radio_offset_def.Location = new System.Drawing.Point(16, 44);
+            this.radio_offset_def.Name = "radio_offset_def";
+            this.radio_offset_def.Size = new System.Drawing.Size(59, 16);
+            this.radio_offset_def.TabIndex = 1;
+            this.radio_offset_def.Text = "自定义";
+            this.radio_offset_def.UseVisualStyleBackColor = true;
+            this.radio_offset_def.CheckedChanged += new System.EventHandler(this.radio_offset_def_CheckedChanged);
+            // 
+            // radio_offset_auto
+            // 
+            this.radio_offset_auto.AutoSize = true;
+            this.radio_offset_auto.Checked = true;
+            this.radio_offset_auto.Location = new System.Drawing.Point(16, 20);
+            this.radio_offset_auto.Name = "radio_offset_auto";
+            this.radio_offset_auto.Size = new System.Drawing.Size(47, 16);
+            this.radio_offset_auto.TabIndex = 0;
+            this.radio_offset_auto.TabStop = true;
+            this.radio_offset_auto.Text = "自动";
+            this.radio_offset_auto.UseVisualStyleBackColor = true;
+            this.radio_offset_auto.CheckedChanged += new System.EventHandler(this.radio_offset_auto_CheckedChanged);
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.dataGridView1);
+            this.groupBox9.Controls.Add(this.dgv_freq_limit);
             this.groupBox9.Location = new System.Drawing.Point(282, 12);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(338, 230);
@@ -477,76 +517,44 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "即时确认限制值";
             // 
-            // dataGridView1
+            // dgv_freq_limit
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_freq_limit.AllowUserToAddRows = false;
+            this.dgv_freq_limit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_freq_limit.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_freq_limit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_freq_limit.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Loss,
             this.Freq_4G,
             this.Freq_8G,
             this.Freq_12G});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(332, 199);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_freq_limit.Location = new System.Drawing.Point(0, 20);
+            this.dgv_freq_limit.MultiSelect = false;
+            this.dgv_freq_limit.Name = "dgv_freq_limit";
+            this.dgv_freq_limit.RowHeadersVisible = false;
+            this.dgv_freq_limit.RowTemplate.Height = 23;
+            this.dgv_freq_limit.Size = new System.Drawing.Size(332, 210);
+            this.dgv_freq_limit.TabIndex = 0;
             // 
             // Loss
             // 
             this.Loss.HeaderText = "Loss";
             this.Loss.Name = "Loss";
-            this.Loss.Width = 54;
             // 
             // Freq_4G
             // 
             this.Freq_4G.HeaderText = "Freq 4G";
             this.Freq_4G.Name = "Freq_4G";
-            this.Freq_4G.Width = 72;
             // 
             // Freq_8G
             // 
             this.Freq_8G.HeaderText = "Freq 8G";
             this.Freq_8G.Name = "Freq_8G";
-            this.Freq_8G.Width = 72;
             // 
             // Freq_12G
             // 
             this.Freq_12G.HeaderText = "Freq 12.89G";
             this.Freq_12G.Name = "Freq_12G";
-            this.Freq_12G.Width = 96;
-            // 
-            // radio_sn_manual
-            // 
-            this.radio_sn_manual.AutoSize = true;
-            this.radio_sn_manual.Location = new System.Drawing.Point(12, 20);
-            this.radio_sn_manual.Name = "radio_sn_manual";
-            this.radio_sn_manual.Size = new System.Drawing.Size(47, 16);
-            this.radio_sn_manual.TabIndex = 3;
-            this.radio_sn_manual.Text = "手动";
-            this.radio_sn_manual.UseVisualStyleBackColor = true;
-            // 
-            // radio_sn_auto
-            // 
-            this.radio_sn_auto.AutoSize = true;
-            this.radio_sn_auto.Checked = true;
-            this.radio_sn_auto.Location = new System.Drawing.Point(131, 19);
-            this.radio_sn_auto.Name = "radio_sn_auto";
-            this.radio_sn_auto.Size = new System.Drawing.Size(47, 16);
-            this.radio_sn_auto.TabIndex = 2;
-            this.radio_sn_auto.TabStop = true;
-            this.radio_sn_auto.Text = "自动";
-            this.radio_sn_auto.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel_loss_def_value
-            // 
-            this.linkLabel_loss_def_value.AutoSize = true;
-            this.linkLabel_loss_def_value.Location = new System.Drawing.Point(81, 46);
-            this.linkLabel_loss_def_value.Name = "linkLabel_loss_def_value";
-            this.linkLabel_loss_def_value.Size = new System.Drawing.Size(29, 12);
-            this.linkLabel_loss_def_value.TabIndex = 11;
-            this.linkLabel_loss_def_value.TabStop = true;
-            this.linkLabel_loss_def_value.Text = "预设";
             // 
             // DevOptSet
             // 
@@ -554,6 +562,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(649, 396);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -568,6 +577,7 @@
             this.MaximizeBox = false;
             this.Name = "DevOptSet";
             this.Text = "Delta L Operation Config";
+            this.Load += new System.EventHandler(this.DevOptSet_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -585,7 +595,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_freq_limit)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -625,11 +635,11 @@
         private System.Windows.Forms.RadioButton radio_port_24;
         private System.Windows.Forms.RadioButton radio_port_13;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.RadioButton radioButton7;
-        private System.Windows.Forms.RadioButton radioButton8;
+        private System.Windows.Forms.TextBox tx_offset;
+        private System.Windows.Forms.RadioButton radio_offset_def;
+        private System.Windows.Forms.RadioButton radio_offset_auto;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_freq_limit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loss;
         private System.Windows.Forms.DataGridViewTextBoxColumn Freq_4G;
         private System.Windows.Forms.DataGridViewTextBoxColumn Freq_8G;
