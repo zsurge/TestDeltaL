@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DelealParamSet));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsb_create_xml = new System.Windows.Forms.ToolStripButton();
             this.tsb_measure_loadXml = new System.Windows.Forms.ToolStripButton();
@@ -42,6 +44,17 @@
             this.tsb_layer3 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv_xml_show = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Step = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Layer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Short_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medium_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Long_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecordPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -65,17 +78,6 @@
             this.Loss_Upper_limit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uncertainty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Step = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Layer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Short_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Medium_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Long_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecordPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -117,7 +119,7 @@
             this.tsb_create_xml.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_create_xml.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_create_xml.Name = "tsb_create_xml";
-            this.tsb_create_xml.Size = new System.Drawing.Size(108, 36);
+            this.tsb_create_xml.Size = new System.Drawing.Size(107, 36);
             this.tsb_create_xml.Text = "新建档案";
             this.tsb_create_xml.Click += new System.EventHandler(this.tsb_create_xml_Click);
             // 
@@ -128,7 +130,7 @@
             this.tsb_measure_loadXml.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_measure_loadXml.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_measure_loadXml.Name = "tsb_measure_loadXml";
-            this.tsb_measure_loadXml.Size = new System.Drawing.Size(76, 36);
+            this.tsb_measure_loadXml.Size = new System.Drawing.Size(75, 36);
             this.tsb_measure_loadXml.Text = "载入";
             // 
             // tsb_save_xml
@@ -138,7 +140,7 @@
             this.tsb_save_xml.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_save_xml.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_save_xml.Name = "tsb_save_xml";
-            this.tsb_save_xml.Size = new System.Drawing.Size(76, 36);
+            this.tsb_save_xml.Size = new System.Drawing.Size(75, 36);
             this.tsb_save_xml.Text = "保存";
             // 
             // toolStripSeparator1
@@ -153,8 +155,9 @@
             this.tsb_add_param.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_add_param.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_add_param.Name = "tsb_add_param";
-            this.tsb_add_param.Size = new System.Drawing.Size(76, 36);
+            this.tsb_add_param.Size = new System.Drawing.Size(75, 36);
             this.tsb_add_param.Text = "新增";
+            this.tsb_add_param.Click += new System.EventHandler(this.tsb_add_param_Click);
             // 
             // tsb_copy_param
             // 
@@ -163,8 +166,9 @@
             this.tsb_copy_param.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_copy_param.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_copy_param.Name = "tsb_copy_param";
-            this.tsb_copy_param.Size = new System.Drawing.Size(76, 36);
+            this.tsb_copy_param.Size = new System.Drawing.Size(75, 36);
             this.tsb_copy_param.Text = "复制";
+            this.tsb_copy_param.Click += new System.EventHandler(this.tsb_copy_param_Click);
             // 
             // tsb_del_param
             // 
@@ -173,7 +177,7 @@
             this.tsb_del_param.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsb_del_param.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_del_param.Name = "tsb_del_param";
-            this.tsb_del_param.Size = new System.Drawing.Size(76, 36);
+            this.tsb_del_param.Size = new System.Drawing.Size(75, 36);
             this.tsb_del_param.Text = "删除";
             // 
             // toolStripSeparator2
@@ -183,19 +187,23 @@
             // 
             // tsb_layer2
             // 
+            this.tsb_layer2.BackColor = System.Drawing.SystemColors.Highlight;
             this.tsb_layer2.Image = ((System.Drawing.Image)(resources.GetObject("tsb_layer2.Image")));
             this.tsb_layer2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_layer2.Name = "tsb_layer2";
             this.tsb_layer2.Size = new System.Drawing.Size(49, 36);
             this.tsb_layer2.Text = "2L";
+            this.tsb_layer2.Click += new System.EventHandler(this.tsb_layer2_Click);
             // 
             // tsb_layer3
             // 
+            this.tsb_layer3.BackColor = System.Drawing.SystemColors.Control;
             this.tsb_layer3.Image = ((System.Drawing.Image)(resources.GetObject("tsb_layer3.Image")));
             this.tsb_layer3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsb_layer3.Name = "tsb_layer3";
             this.tsb_layer3.Size = new System.Drawing.Size(49, 36);
             this.tsb_layer3.Text = "3L";
+            this.tsb_layer3.Click += new System.EventHandler(this.tsb_layer3_Click);
             // 
             // splitContainer1
             // 
@@ -219,7 +227,9 @@
             // dgv_xml_show
             // 
             this.dgv_xml_show.AllowUserToAddRows = false;
-            this.dgv_xml_show.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgv_xml_show.AllowUserToResizeColumns = false;
+            this.dgv_xml_show.AllowUserToResizeRows = false;
+            this.dgv_xml_show.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_xml_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_xml_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -234,12 +244,93 @@
             this.SaveCurve,
             this.SaveImage});
             this.dgv_xml_show.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_xml_show.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv_xml_show.Location = new System.Drawing.Point(0, 0);
+            this.dgv_xml_show.MultiSelect = false;
             this.dgv_xml_show.Name = "dgv_xml_show";
-            this.dgv_xml_show.ReadOnly = true;
+            this.dgv_xml_show.RowHeadersVisible = false;
             this.dgv_xml_show.RowTemplate.Height = 23;
             this.dgv_xml_show.Size = new System.Drawing.Size(910, 280);
             this.dgv_xml_show.TabIndex = 0;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID.Width = 23;
+            // 
+            // Step
+            // 
+            this.Step.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Step.HeaderText = "Step";
+            this.Step.Name = "Step";
+            this.Step.ReadOnly = true;
+            this.Step.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Step.Width = 36;
+            // 
+            // Method
+            // 
+            this.Method.HeaderText = "Method";
+            this.Method.Name = "Method";
+            this.Method.ReadOnly = true;
+            this.Method.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Layer
+            // 
+            this.Layer.HeaderText = "Layer";
+            this.Layer.Name = "Layer";
+            this.Layer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Short_Length
+            // 
+            this.Short_Length.HeaderText = "Short_Length";
+            this.Short_Length.Name = "Short_Length";
+            this.Short_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Medium_Length
+            // 
+            this.Medium_Length.HeaderText = "Medium_Length";
+            this.Medium_Length.Name = "Medium_Length";
+            this.Medium_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Long_Length
+            // 
+            this.Long_Length.HeaderText = "Long_Length";
+            this.Long_Length.Name = "Long_Length";
+            this.Long_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RecordPath
+            // 
+            this.RecordPath.HeaderText = "RecordPath";
+            this.RecordPath.Name = "RecordPath";
+            this.RecordPath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // SaveCurve
+            // 
+            this.SaveCurve.HeaderText = "SaveCurve";
+            this.SaveCurve.Name = "SaveCurve";
+            this.SaveCurve.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // SaveImage
+            // 
+            this.SaveImage.HeaderText = "SaveImage";
+            this.SaveImage.Name = "SaveImage";
+            this.SaveImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel1
             // 
@@ -391,9 +482,9 @@
             // dgv_param_show
             // 
             this.dgv_param_show.AllowUserToAddRows = false;
-            this.dgv_param_show.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgv_param_show.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgv_param_show.AllowUserToResizeColumns = false;
+            this.dgv_param_show.AllowUserToResizeRows = false;
+            this.dgv_param_show.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_param_show.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_param_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.detail_ID,
@@ -402,132 +493,74 @@
             this.Loss_Upper_limit,
             this.Uncertainty,
             this.Difference});
+            this.dgv_param_show.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv_param_show.Location = new System.Drawing.Point(0, 3);
+            this.dgv_param_show.MultiSelect = false;
             this.dgv_param_show.Name = "dgv_param_show";
             this.dgv_param_show.ReadOnly = true;
+            this.dgv_param_show.RowHeadersVisible = false;
             this.dgv_param_show.RowTemplate.Height = 23;
-            this.dgv_param_show.Size = new System.Drawing.Size(910, 170);
+            this.dgv_param_show.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_param_show.Size = new System.Drawing.Size(570, 170);
             this.dgv_param_show.TabIndex = 0;
+            this.dgv_param_show.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_param_show_CellMouseDown);
             // 
             // detail_ID
             // 
             this.detail_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle7;
+            this.detail_ID.Frozen = true;
             this.detail_ID.HeaderText = "ID";
             this.detail_ID.Name = "detail_ID";
             this.detail_ID.ReadOnly = true;
-            this.detail_ID.Width = 42;
+            this.detail_ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.detail_ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.detail_ID.Width = 23;
             // 
             // Frequency
             // 
+            this.Frequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Frequency.HeaderText = "Frequency";
             this.Frequency.Name = "Frequency";
-            this.Frequency.ReadOnly = true;
-            this.Frequency.Width = 84;
+            this.Frequency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Frequency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Frequency.Width = 109;
             // 
             // Loss_lower_limit
             // 
+            this.Loss_lower_limit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Loss_lower_limit.HeaderText = "Loss lower limit";
             this.Loss_lower_limit.Name = "Loss_lower_limit";
-            this.Loss_lower_limit.ReadOnly = true;
-            this.Loss_lower_limit.Width = 115;
+            this.Loss_lower_limit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Loss_lower_limit.Width = 109;
             // 
             // Loss_Upper_limit
             // 
+            this.Loss_Upper_limit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Loss_Upper_limit.HeaderText = "Loss Upper limit";
             this.Loss_Upper_limit.Name = "Loss_Upper_limit";
-            this.Loss_Upper_limit.ReadOnly = true;
-            this.Loss_Upper_limit.Width = 115;
+            this.Loss_Upper_limit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Loss_Upper_limit.Width = 108;
             // 
             // Uncertainty
             // 
+            this.Uncertainty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Uncertainty.HeaderText = "Uncertainty(%)";
             this.Uncertainty.Name = "Uncertainty";
-            this.Uncertainty.ReadOnly = true;
-            this.Uncertainty.Width = 114;
+            this.Uncertainty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Uncertainty.Width = 109;
             // 
             // Difference
             // 
+            this.Difference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Difference.HeaderText = "Difference";
             this.Difference.Name = "Difference";
-            this.Difference.ReadOnly = true;
-            this.Difference.Width = 90;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Width = 42;
-            // 
-            // Step
-            // 
-            this.Step.HeaderText = "Step";
-            this.Step.Name = "Step";
-            this.Step.ReadOnly = true;
-            this.Step.Width = 54;
-            // 
-            // Method
-            // 
-            this.Method.HeaderText = "Method";
-            this.Method.Name = "Method";
-            this.Method.ReadOnly = true;
-            this.Method.Width = 66;
-            // 
-            // Layer
-            // 
-            this.Layer.HeaderText = "Layer";
-            this.Layer.Name = "Layer";
-            this.Layer.ReadOnly = true;
-            this.Layer.Width = 60;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 96;
-            // 
-            // Short_Length
-            // 
-            this.Short_Length.HeaderText = "Short_Length";
-            this.Short_Length.Name = "Short_Length";
-            this.Short_Length.ReadOnly = true;
-            this.Short_Length.Width = 102;
-            // 
-            // Medium_Length
-            // 
-            this.Medium_Length.HeaderText = "Medium_Length";
-            this.Medium_Length.Name = "Medium_Length";
-            this.Medium_Length.ReadOnly = true;
-            this.Medium_Length.Width = 108;
-            // 
-            // Long_Length
-            // 
-            this.Long_Length.HeaderText = "Long_Length";
-            this.Long_Length.Name = "Long_Length";
-            this.Long_Length.ReadOnly = true;
-            this.Long_Length.Width = 96;
-            // 
-            // RecordPath
-            // 
-            this.RecordPath.HeaderText = "RecordPath";
-            this.RecordPath.Name = "RecordPath";
-            this.RecordPath.ReadOnly = true;
-            this.RecordPath.Width = 90;
-            // 
-            // SaveCurve
-            // 
-            this.SaveCurve.HeaderText = "SaveCurve";
-            this.SaveCurve.Name = "SaveCurve";
-            this.SaveCurve.ReadOnly = true;
-            this.SaveCurve.Width = 84;
-            // 
-            // SaveImage
-            // 
-            this.SaveImage.HeaderText = "SaveImage";
-            this.SaveImage.Name = "SaveImage";
-            this.SaveImage.ReadOnly = true;
-            this.SaveImage.Width = 84;
+            this.Difference.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Difference.Width = 109;
             // 
             // DelealParamSet
             // 
@@ -591,12 +624,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_param_show;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detail_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_lower_limit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_Upper_limit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Uncertainty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Difference;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Step;
         private System.Windows.Forms.DataGridViewTextBoxColumn Method;
@@ -608,5 +635,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RecordPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveCurve;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveImage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detail_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_lower_limit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_Upper_limit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Uncertainty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Difference;
     }
 }

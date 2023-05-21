@@ -183,7 +183,6 @@
             this.radio_save_param.TabStop = true;
             this.radio_save_param.Text = "按量测参数";
             this.radio_save_param.UseVisualStyleBackColor = true;
-       
             // 
             // cmbo_format
             // 
@@ -540,21 +539,26 @@
             // 
             this.Loss.HeaderText = "Loss";
             this.Loss.Name = "Loss";
+            this.Loss.ReadOnly = true;
+            this.Loss.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Freq_4G
             // 
             this.Freq_4G.HeaderText = "Freq 4G";
             this.Freq_4G.Name = "Freq_4G";
+            this.Freq_4G.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Freq_8G
             // 
             this.Freq_8G.HeaderText = "Freq 8G";
             this.Freq_8G.Name = "Freq_8G";
+            this.Freq_8G.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Freq_12G
             // 
             this.Freq_12G.HeaderText = "Freq 12.89G";
             this.Freq_12G.Name = "Freq_12G";
+            this.Freq_12G.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // DevOptSet
             // 
@@ -640,12 +644,12 @@
         private System.Windows.Forms.RadioButton radio_offset_auto;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.DataGridView dgv_freq_limit;
+        private System.Windows.Forms.RadioButton radio_sn_manual;
+        private System.Windows.Forms.RadioButton radio_sn_auto;
+        private System.Windows.Forms.LinkLabel linkLabel_loss_def_value;
         private System.Windows.Forms.DataGridViewTextBoxColumn Loss;
         private System.Windows.Forms.DataGridViewTextBoxColumn Freq_4G;
         private System.Windows.Forms.DataGridViewTextBoxColumn Freq_8G;
         private System.Windows.Forms.DataGridViewTextBoxColumn Freq_12G;
-        private System.Windows.Forms.RadioButton radio_sn_manual;
-        private System.Windows.Forms.RadioButton radio_sn_auto;
-        private System.Windows.Forms.LinkLabel linkLabel_loss_def_value;
     }
 }

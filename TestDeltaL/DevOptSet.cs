@@ -32,7 +32,7 @@ namespace TestDeltaL
             }
         }
 
-
+        //设置初始值
         private void SetDefFreqLimitToGridView()
         {
             // 添加三行数据
@@ -57,17 +57,22 @@ namespace TestDeltaL
             }
         }
 
-        private void BindFreqLimitToGridView(List<float> freq_limit, DataGridView dataGridView)
-        {
-
-        }
-
         private void DevOptSet_Load(object sender, EventArgs e)
         {
-            ReadFromConfigFile();
+            read_freq_limit_config();
             SetDefFreqLimitToGridView();
+
+            read_key_config();
+            read_sn_config();
+            read_histpry_file_save_mode();
+            read_confirm_mode_config();
+            read_test_mode_config();
+            read_port_config();
+            read_insertionLoss_config();
+            read_test_process_config();
         }
 
+        //保存freq limit 数据到ini文件
         private void ReadFromDataGridView()
         {
             optParam.freq_limit.Clear();
@@ -93,7 +98,7 @@ namespace TestDeltaL
             INI.WriteValueToIniFile("DeltaL", "Freq_Limit", freq_limit_str);
         }
 
-        private void ReadFromConfigFile()
+        private void read_freq_limit_config()
         {
             string freq_limit_str = String.Empty;
             optParam.freq_limit.Clear();
@@ -151,10 +156,12 @@ namespace TestDeltaL
             //流水号
             if (radio_sn_manual.Checked)
             {
+                optParam.snRecordMode = 0;
                 INI.WriteValueToIniFile("DeltaL", "SN Method", "Manual");
             }
             else
             {
+                optParam.snRecordMode = 1;
                 INI.WriteValueToIniFile("DeltaL", "SN Method", "Auto");
             }
 
@@ -215,41 +222,218 @@ namespace TestDeltaL
             if (radio_port_13.Checked)
             {
                 INI.WriteValueToIniFile("DeltaL", "port", "1 & 3");
-                optParam.meas_type = 13;
+                optParam.port_select = 13;
             }
             else
             {
                 INI.WriteValueToIniFile("DeltaL", "port", "2 & 4");
-                optParam.meas_type = 24;
+                optParam.port_select = 24;
             }
 
             //Insertion Loss Y
             if (radio_offset_auto.Checked)
             {
-                INI.WriteValueToIniFile("DeltaL", "Insertion_Loss", "");
+                INI.WriteValueToIniFile("DeltaL", "Insertion_Loss", "Auto");
                 optParam.Compensation_mode = 1;
             }
             else
             {
-                if (tx_offset.Text.Length > 0)
+                
+               INI.WriteValueToIniFile("DeltaL", "Insertion_Loss", "Manual");
+               optParam.Compensation_mode = 0;
+            }
+
+            if (tx_offset.Text.Length > 0)
+            {
+                INI.WriteValueToIniFile("DeltaL", "Insertion_Loss_value", tx_offset.Text);
+                int offsetValue;
+                if (int.TryParse(tx_offset.Text, out offsetValue))
                 {
-                    INI.WriteValueToIniFile("DeltaL", "Insertion_Loss", tx_offset.Text);
-                    int offsetValue;
-                    if (int.TryParse(tx_offset.Text, out offsetValue))
-                    {
-                        optParam.offsetValue = offsetValue;
-                    }
-                    else
-                    {
-                        // 转换失败，做相应的处理
-                    }
+                    optParam.offsetValue = offsetValue;
                 }
-                optParam.Compensation_mode = 0;
             }
 
             OnSnChanged();
 
             this.Close();
+        }
+
+        private void read_key_config()
+        {
+            //键盘 
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "Keyboard");
+
+            if (str.Equals("Spec"))
+            {
+                optParam.keyMode = 1;
+                radio_key_space.Checked = true;
+            }
+            else
+            {
+                optParam.keyMode = 0;
+                radio_key_close.Checked = true;
+            }
+
+        }
+
+        private void read_sn_config()
+        {
+            //流水号
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "SN Method");
+
+            if (str.Equals("Auto"))
+            {
+                optParam.snRecordMode = 1;
+                radio_sn_auto.Checked = true;
+            }
+            else
+            {
+                optParam.snRecordMode = 0;
+                radio_sn_manual.Checked = true;
+            }
+
+            tx_sn_begin.Text = INI.GetValueFromIniFile("DeltaL", "SerialNumber");
+            tx_sn_prefix.Text = INI.GetValueFromIniFile("DeltaL", "SN_Head");
+            optParam.snPrefix = tx_sn_prefix.Text;
+            optParam.snBegin = tx_sn_begin.Text;
+        }
+
+        private void read_histpry_file_save_mode()
+        {
+            //sava mode
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "Naming Method");
+
+            if (str.Equals("ByDate"))
+            {
+                radio_save_date.Checked = true;
+                optParam.exportMode = 1;
+            }
+            else
+            {
+                optParam.exportMode = 2;
+                radio_save_param.Checked = true;
+            }
+
+            tx_history_report.Text = INI.GetValueFromIniFile("DeltaL", "HistoryFile");
+            tx_export_report.Text = INI.GetValueFromIniFile("DeltaL", "ExportFile");
+            optParam.outputExportFileName = tx_export_report.Text;
+            optParam.outputExportFileName = tx_export_report.Text;
+
+
+        }
+
+        private void read_confirm_mode_config()
+        {
+            //即时确认
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "Real_time_confirm");
+
+            if (str.Equals("Enable"))
+            {
+                optParam.real_time_enable = 1;
+                radio_real_time_on.Checked = true;
+            }
+            else
+            {
+                optParam.real_time_enable = 0;
+                radio_real_time_off.Checked = true;
+            }
+        }
+
+        private void read_test_mode_config()
+        {
+            //测试模式
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "meas_type");
+
+            if (str.Equals("S-Param"))
+            {
+                optParam.meas_type = 1;
+                radio_test_sparam.Checked = true;
+            }
+            else
+            {
+                optParam.meas_type = 0;
+                radio_test_tdr.Checked = true;
+            }
+        }
+
+        private void read_port_config()
+        {
+            //端口选择
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "port");
+
+            if (str.Equals("1 & 3"))
+            {
+                optParam.port_select = 13;
+                radio_port_13.Checked = true;
+            }
+            else
+            {
+                optParam.port_select = 24;
+                radio_port_24.Checked = true;
+            }
+
+        }
+
+        private void read_insertionLoss_config()
+        {
+            //Insertion Loss Y
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "Insertion_Loss");
+
+            if (str.Equals("Auto"))
+            {
+                optParam.Compensation_mode = 1;
+                radio_offset_auto.Checked = true;
+            }
+            else
+            {
+                optParam.Compensation_mode = 0;
+                radio_offset_def.Checked = true;
+            }
+
+            int offsetValue;
+            tx_offset.Text = INI.GetValueFromIniFile("DeltaL", "Insertion_Loss_value");
+
+            if (int.TryParse(tx_offset.Text, out offsetValue))
+            {
+                optParam.offsetValue = offsetValue;
+            }
+        }
+
+        private void read_test_process_config()
+        {
+            //测试流程
+
+            string str = String.Empty;
+            str = INI.GetValueFromIniFile("DeltaL", "TestStep");
+
+            if (str.Equals("Pass"))
+            {
+                optParam.testMode = 1;
+                radio_pro_pass.Checked = true;
+            }
+            else if (str.Equals("Manual"))
+            {
+                optParam.testMode = 2;
+                radio_pro_manual.Checked = true;
+            }
+            else if (str.Equals("PassRecord"))
+            {
+                optParam.testMode = 4;
+                radio_pro_only_pass.Checked = true;
+            }
+            else
+            {
+                optParam.testMode = 3;
+                radio_pro_next.Checked = true;
+            }
+
         }
 
         private void btn_opt_cancel_Click(object sender, EventArgs e)

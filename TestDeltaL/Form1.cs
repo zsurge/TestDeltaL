@@ -394,6 +394,13 @@ namespace TestDeltaL
         {
             CreateDefaultDir();
             initChart(Chart_Tdr);
+
+            tsb_GetTestIndex.Visible = false;
+            tsb_StartTest.Visible = false;
+            PubConfig.gDeviceType = PubConfig.DeviceType.DELTAL;
+            //update_chart();
+
+
             //init_deltal_chart();
         }
 

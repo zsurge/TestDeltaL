@@ -26,9 +26,9 @@ E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DelealParamSet.resources
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevOptSet.resources
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Form1.resources
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Properties.Resources.resources
-E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.TdrParamSet.resources
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.GenerateResource.cache
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CoreCompileInputs.cache
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CopyComplete
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb
+E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.TdrParamSet.resources
