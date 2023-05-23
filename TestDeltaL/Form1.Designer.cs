@@ -208,7 +208,7 @@
             this.tdrToolStripMenuItem,
             this.deltaLToolStripMenuItem});
             this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
-            this.modeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.modeToolStripMenuItem.Text = "Mode";
             // 
             // tdrToolStripMenuItem
@@ -216,14 +216,14 @@
             this.tdrToolStripMenuItem.Checked = true;
             this.tdrToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tdrToolStripMenuItem.Name = "tdrToolStripMenuItem";
-            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tdrToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.tdrToolStripMenuItem.Text = "TDR";
             this.tdrToolStripMenuItem.Click += new System.EventHandler(this.tdrToolStripMenuItem_Click);
             // 
             // deltaLToolStripMenuItem
             // 
             this.deltaLToolStripMenuItem.Name = "deltaLToolStripMenuItem";
-            this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deltaLToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.deltaLToolStripMenuItem.Text = "Delta L";
             this.deltaLToolStripMenuItem.Click += new System.EventHandler(this.deltaLToolStripMenuItem_Click);
             // 
@@ -236,6 +236,7 @@
             this.tsb_DevConnect.Name = "tsb_DevConnect";
             this.tsb_DevConnect.Size = new System.Drawing.Size(107, 36);
             this.tsb_DevConnect.Text = "仪器设置";
+            this.tsb_DevConnect.Click += new System.EventHandler(this.tsb_DevConnect_Click);
             // 
             // tsb_DevPOptSet
             // 

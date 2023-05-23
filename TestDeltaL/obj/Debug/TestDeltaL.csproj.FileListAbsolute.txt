@@ -32,3 +32,41 @@ E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CopyComplete
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb
 E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.TdrParamSet.resources
+C:\ZB\TestDeltaL\TestDeltaL\bin\Debug\NLog.config
+C:\ZB\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.exe.config
+C:\ZB\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.exe
+C:\ZB\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.pdb
+C:\ZB\TestDeltaL\TestDeltaL\bin\Debug\NLog.dll
+C:\ZB\TestDeltaL\TestDeltaL\bin\Debug\NLog.xml
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.AssemblyReference.cache
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DelealParamSet.resources
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevOptSet.resources
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Form1.resources
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Properties.Resources.resources
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.TdrParamSet.resources
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.GenerateResource.cache
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CoreCompileInputs.cache
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CopyComplete
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb
+C:\ZB\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevConnectSet.resources
+E:\TSJ PRO\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevConnectSet.resources
+E:\TestDeltaL\TestDeltaL\bin\Debug\NLog.config
+E:\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.exe.config
+E:\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.exe
+E:\TestDeltaL\TestDeltaL\bin\Debug\TestDeltaL.pdb
+E:\TestDeltaL\TestDeltaL\bin\Debug\NLog.dll
+E:\TestDeltaL\TestDeltaL\bin\Debug\NLog.xml
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.AssemblyReference.cache
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.SuggestedBindingRedirects.cache
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DelealParamSet.resources
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevConnectSet.resources
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.DevOptSet.resources
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Form1.resources
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.Properties.Resources.resources
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.TdrParamSet.resources
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.GenerateResource.cache
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CoreCompileInputs.cache
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.csproj.CopyComplete
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.exe
+E:\TestDeltaL\TestDeltaL\obj\Debug\TestDeltaL.pdb

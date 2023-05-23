@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace TestDeltaL
 {
+    public static class optStatus
+    {
+        public static bool isConnect { get; set; } = false;
+        public static bool isLoadXml { get; set; } = false;
+        public static bool isGetIndex { get; set; } = false;
+    }
     public static class optParam
     {
         //键盘默认模式，0是关闭，1是启用

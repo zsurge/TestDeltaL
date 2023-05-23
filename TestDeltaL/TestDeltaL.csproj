@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CGloabal.cs" />
     <Compile Include="DelealParam.cs" />
     <Compile Include="DelealParamSet.cs">
       <SubType>Form</SubType>
@@ -62,12 +63,23 @@
     <Compile Include="DelealParamSet.Designer.cs">
       <DependentUpon>DelealParamSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevConnectSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevConnectSet.Designer.cs">
+      <DependentUpon>DevConnectSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="DevOptSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DevOptSet.Designer.cs">
       <DependentUpon>DevOptSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="Driver\CommonFuncs.cs" />
+    <Compile Include="Driver\E5063A.cs" />
+    <Compile Include="Driver\E5071C.cs" />
+    <Compile Include="Driver\E5080B.cs" />
+    <Compile Include="Driver\visa32.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="DelealParamSet.resx">
       <DependentUpon>DelealParamSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevConnectSet.resx">
+      <DependentUpon>DevConnectSet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DevOptSet.resx">
       <DependentUpon>DevOptSet.cs</DependentUpon>

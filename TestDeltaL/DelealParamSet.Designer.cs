@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DelealParamSet));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsb_create_xml = new System.Windows.Forms.ToolStripButton();
             this.tsb_measure_loadXml = new System.Windows.Forms.ToolStripButton();
@@ -74,8 +74,8 @@
             this.dgv_param_show = new System.Windows.Forms.DataGridView();
             this.detail_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Frequency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loss_lower_limit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Loss_Upper_limit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loss_LowerLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Loss_UpperLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uncertainty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
@@ -132,6 +132,7 @@
             this.tsb_measure_loadXml.Name = "tsb_measure_loadXml";
             this.tsb_measure_loadXml.Size = new System.Drawing.Size(75, 36);
             this.tsb_measure_loadXml.Text = "载入";
+            this.tsb_measure_loadXml.Click += new System.EventHandler(this.tsb_measure_loadXml_Click);
             // 
             // tsb_save_xml
             // 
@@ -179,6 +180,7 @@
             this.tsb_del_param.Name = "tsb_del_param";
             this.tsb_del_param.Size = new System.Drawing.Size(75, 36);
             this.tsb_del_param.Text = "删除";
+            this.tsb_del_param.Click += new System.EventHandler(this.tsb_del_param_Click);
             // 
             // toolStripSeparator2
             // 
@@ -256,11 +258,11 @@
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
             this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
@@ -489,11 +491,10 @@
             this.dgv_param_show.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.detail_ID,
             this.Frequency,
-            this.Loss_lower_limit,
-            this.Loss_Upper_limit,
+            this.Loss_LowerLimit,
+            this.Loss_UpperLimit,
             this.Uncertainty,
             this.Difference});
-            this.dgv_param_show.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgv_param_show.Location = new System.Drawing.Point(0, 3);
             this.dgv_param_show.MultiSelect = false;
             this.dgv_param_show.Name = "dgv_param_show";
@@ -508,11 +509,11 @@
             // detail_ID
             // 
             this.detail_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle2;
             this.detail_ID.Frozen = true;
             this.detail_ID.HeaderText = "ID";
             this.detail_ID.Name = "detail_ID";
@@ -526,31 +527,35 @@
             this.Frequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Frequency.HeaderText = "Frequency";
             this.Frequency.Name = "Frequency";
+            this.Frequency.ReadOnly = true;
             this.Frequency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Frequency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Frequency.Width = 109;
             // 
-            // Loss_lower_limit
+            // Loss_LowerLimit
             // 
-            this.Loss_lower_limit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Loss_lower_limit.HeaderText = "Loss lower limit";
-            this.Loss_lower_limit.Name = "Loss_lower_limit";
-            this.Loss_lower_limit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Loss_lower_limit.Width = 109;
+            this.Loss_LowerLimit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Loss_LowerLimit.HeaderText = "Loss lower limit";
+            this.Loss_LowerLimit.Name = "Loss_LowerLimit";
+            this.Loss_LowerLimit.ReadOnly = true;
+            this.Loss_LowerLimit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Loss_LowerLimit.Width = 109;
             // 
-            // Loss_Upper_limit
+            // Loss_UpperLimit
             // 
-            this.Loss_Upper_limit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Loss_Upper_limit.HeaderText = "Loss Upper limit";
-            this.Loss_Upper_limit.Name = "Loss_Upper_limit";
-            this.Loss_Upper_limit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Loss_Upper_limit.Width = 108;
+            this.Loss_UpperLimit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Loss_UpperLimit.HeaderText = "Loss Upper limit";
+            this.Loss_UpperLimit.Name = "Loss_UpperLimit";
+            this.Loss_UpperLimit.ReadOnly = true;
+            this.Loss_UpperLimit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Loss_UpperLimit.Width = 108;
             // 
             // Uncertainty
             // 
             this.Uncertainty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Uncertainty.HeaderText = "Uncertainty(%)";
             this.Uncertainty.Name = "Uncertainty";
+            this.Uncertainty.ReadOnly = true;
             this.Uncertainty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Uncertainty.Width = 109;
             // 
@@ -559,6 +564,7 @@
             this.Difference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Difference.HeaderText = "Difference";
             this.Difference.Name = "Difference";
+            this.Difference.ReadOnly = true;
             this.Difference.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Difference.Width = 109;
             // 
@@ -637,8 +643,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn detail_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_lower_limit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_Upper_limit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_LowerLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_UpperLimit;
         private System.Windows.Forms.DataGridViewTextBoxColumn Uncertainty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Difference;
     }

@@ -404,6 +404,11 @@ namespace TestDeltaL
             //init_deltal_chart();
         }
 
-
+        private void tsb_DevConnect_Click(object sender, EventArgs e)
+        {
+            DevConnectSet devConnectSet = new DevConnectSet();
+            //devConnectSet.ChangeValue += new DevConnectSet.ChangeTsbHandler(Change_Tsb_Index);
+            devConnectSet.Show();
+        }
     }
 }
