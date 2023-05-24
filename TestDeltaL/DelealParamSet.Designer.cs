@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DelealParamSet));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsb_create_xml = new System.Windows.Forms.ToolStripButton();
             this.tsb_measure_loadXml = new System.Windows.Forms.ToolStripButton();
@@ -44,17 +44,6 @@
             this.tsb_layer3 = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgv_xml_show = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Step = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Layer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Short_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Medium_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Long_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RecordPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -78,6 +67,17 @@
             this.Loss_UpperLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uncertainty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Step = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Method = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Layer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Short_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Medium_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Long_Length = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RecordPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -143,6 +143,7 @@
             this.tsb_save_xml.Name = "tsb_save_xml";
             this.tsb_save_xml.Size = new System.Drawing.Size(75, 36);
             this.tsb_save_xml.Text = "保存";
+            this.tsb_save_xml.Click += new System.EventHandler(this.tsb_save_xml_Click);
             // 
             // toolStripSeparator1
             // 
@@ -254,85 +255,6 @@
             this.dgv_xml_show.RowTemplate.Height = 23;
             this.dgv_xml_show.Size = new System.Drawing.Size(910, 280);
             this.dgv_xml_show.TabIndex = 0;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ID.Width = 23;
-            // 
-            // Step
-            // 
-            this.Step.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Step.HeaderText = "Step";
-            this.Step.Name = "Step";
-            this.Step.ReadOnly = true;
-            this.Step.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Step.Width = 36;
-            // 
-            // Method
-            // 
-            this.Method.HeaderText = "Method";
-            this.Method.Name = "Method";
-            this.Method.ReadOnly = true;
-            this.Method.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Layer
-            // 
-            this.Layer.HeaderText = "Layer";
-            this.Layer.Name = "Layer";
-            this.Layer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Short_Length
-            // 
-            this.Short_Length.HeaderText = "Short_Length";
-            this.Short_Length.Name = "Short_Length";
-            this.Short_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Medium_Length
-            // 
-            this.Medium_Length.HeaderText = "Medium_Length";
-            this.Medium_Length.Name = "Medium_Length";
-            this.Medium_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Long_Length
-            // 
-            this.Long_Length.HeaderText = "Long_Length";
-            this.Long_Length.Name = "Long_Length";
-            this.Long_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // RecordPath
-            // 
-            this.RecordPath.HeaderText = "RecordPath";
-            this.RecordPath.Name = "RecordPath";
-            this.RecordPath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // SaveCurve
-            // 
-            this.SaveCurve.HeaderText = "SaveCurve";
-            this.SaveCurve.Name = "SaveCurve";
-            this.SaveCurve.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // SaveImage
-            // 
-            this.SaveImage.HeaderText = "SaveImage";
-            this.SaveImage.Name = "SaveImage";
-            this.SaveImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // panel1
             // 
@@ -504,16 +426,17 @@
             this.dgv_param_show.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_param_show.Size = new System.Drawing.Size(570, 170);
             this.dgv_param_show.TabIndex = 0;
+            this.dgv_param_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_param_show_CellContentClick);
             this.dgv_param_show.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_param_show_CellMouseDown);
             // 
             // detail_ID
             // 
             this.detail_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle5;
             this.detail_ID.Frozen = true;
             this.detail_ID.HeaderText = "ID";
             this.detail_ID.Name = "detail_ID";
@@ -567,6 +490,85 @@
             this.Difference.ReadOnly = true;
             this.Difference.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Difference.Width = 109;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ID.Width = 23;
+            // 
+            // Step
+            // 
+            this.Step.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Step.HeaderText = "Step";
+            this.Step.Name = "Step";
+            this.Step.ReadOnly = true;
+            this.Step.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Step.Width = 36;
+            // 
+            // Method
+            // 
+            this.Method.HeaderText = "Method";
+            this.Method.Name = "Method";
+            this.Method.ReadOnly = true;
+            this.Method.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Layer
+            // 
+            this.Layer.HeaderText = "Layer";
+            this.Layer.Name = "Layer";
+            this.Layer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
+            this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Short_Length
+            // 
+            this.Short_Length.HeaderText = "Short_Length";
+            this.Short_Length.Name = "Short_Length";
+            this.Short_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Medium_Length
+            // 
+            this.Medium_Length.HeaderText = "Medium_Length";
+            this.Medium_Length.Name = "Medium_Length";
+            this.Medium_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Long_Length
+            // 
+            this.Long_Length.HeaderText = "Long_Length";
+            this.Long_Length.Name = "Long_Length";
+            this.Long_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // RecordPath
+            // 
+            this.RecordPath.HeaderText = "RecordPath";
+            this.RecordPath.Name = "RecordPath";
+            this.RecordPath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // SaveCurve
+            // 
+            this.SaveCurve.HeaderText = "SaveCurve";
+            this.SaveCurve.Name = "SaveCurve";
+            this.SaveCurve.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // SaveImage
+            // 
+            this.SaveImage.HeaderText = "SaveImage";
+            this.SaveImage.Name = "SaveImage";
+            this.SaveImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // DelealParamSet
             // 
@@ -630,6 +632,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_param_show;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detail_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_LowerLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_UpperLimit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Uncertainty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Difference;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Step;
         private System.Windows.Forms.DataGridViewTextBoxColumn Method;
@@ -641,11 +649,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RecordPath;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveCurve;
         private System.Windows.Forms.DataGridViewTextBoxColumn SaveImage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn detail_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Frequency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_LowerLimit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Loss_UpperLimit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Uncertainty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Difference;
     }
 }

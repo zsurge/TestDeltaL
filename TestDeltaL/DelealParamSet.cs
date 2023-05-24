@@ -18,7 +18,10 @@ namespace TestDeltaL
         public bool isSaveXml = true;
 
         //layer是几层
-        public int layer_value = 2;
+        private int layer_value = 2;
+
+        //是否选中频率点标题行 0未选中，1选中
+        private bool isSelectFreqFlag = false;
 
         private Color originalHeaderColor;      //保存默认背景色
         private int highlightedRowIndex = -1; // 记录当前高亮显示的行索引
@@ -146,11 +149,6 @@ namespace TestDeltaL
                         dgv_xml_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
                     }
 
-
-                    //更新STEP
-                    //delealParam.TestStep = dgv_xml_show.Rows.Count;
-                    //dgv_xml_show.Rows[index].Cells[1].Value = (delealParam.TestStep++).ToString();      
-
                     dgv_xml_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows.Count.ToString();
                     dgv_xml_show.Rows[index].Cells[1].Value = dgv_xml_show.Rows.Count.ToString();
                 }
@@ -164,10 +162,7 @@ namespace TestDeltaL
                     {
                         rowVals[i] = row.Cells[i].Value.ToString();
                     }
-                    //更新STEP
-                    //delealParam.TestStep = dgv_xml_show.Rows.Count+1;
-                    //rowVals[1] = (delealParam.TestStep++).ToString();
-
+   
                     rowVals[0] = (dgv_xml_show.Rows.Count + 1).ToString();
                     rowVals[1] = (dgv_xml_show.Rows.Count + 1).ToString();
 
@@ -302,32 +297,29 @@ namespace TestDeltaL
             //复制配方行
             isSaveXml = false;
 
-            if (dgv_xml_show.Rows.Count == 0)
+            if (dgv_param_show.Rows.Count == 0)
             {
                 MessageBox.Show("请先新建一条配方");
                 return;
             }
 
-            if (dgv_xml_show.DataSource == null)
+            if (dgv_param_show.DataSource == null)
             {
-                int index = dgv_xml_show.Rows.Add();//添加一行
+                int index = dgv_param_show.Rows.Add();//添加一行
 
-                DataGridViewRow row = dgv_xml_show.Rows[dgv_xml_show.CurrentRow.Index]; //获取当前行数据
+                DataGridViewRow row = dgv_param_show.Rows[dgv_param_show.CurrentRow.Index]; //获取当前行数据
                                                                                   //添加一新行，并把数据赋值给新行
                 for (int i = 0; i < row.Cells.Count; i++)
                 {
-                    dgv_xml_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
+                    dgv_param_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
                 }
 
-                //更新STEP
-                //dp.TestStep = dgv_xml_show.Rows.Count;
-                //dgv_xml_show.Rows[index].Cells[1].Value = (dp.TestStep++).ToString();
 
-                dgv_xml_show.Rows[index].Cells[1].Value = (dgv_xml_show.Rows.Count).ToString();
+                dgv_param_show.Rows[index].Cells[1].Value = (dgv_param_show.Rows.Count).ToString();
             }
             else
             {
-                DataGridViewRow row = dgv_xml_show.Rows[dgv_xml_show.CurrentRow.Index]; //获取当前行数据
+                DataGridViewRow row = dgv_param_show.Rows[dgv_param_show.CurrentRow.Index]; //获取当前行数据
                 string[] rowVals = new string[24];
 
                 //添加一新行，并把数据赋值给新行
@@ -336,31 +328,28 @@ namespace TestDeltaL
                     rowVals[i] = row.Cells[i].Value.ToString();
                 }
 
-                //更新STEP
-                //dp.TestStep = dgv_xml_show.Rows.Count+1 ;
-                //rowVals[1] = (dp.TestStep++).ToString();
 
-                rowVals[1] = (dgv_xml_show.Rows.Count + 1).ToString();
-                ((DataTable)dgv_xml_show.DataSource).Rows.Add(rowVals);
+                rowVals[1] = (dgv_param_show.Rows.Count + 1).ToString();
+                ((DataTable)dgv_param_show.DataSource).Rows.Add(rowVals);
             }
 
-            dgv_xml_show.CurrentCell = dgv_xml_show.Rows[this.dgv_xml_show.Rows.Count - 1].Cells[0];
+            dgv_param_show.CurrentCell = dgv_param_show.Rows[this.dgv_param_show.Rows.Count - 1].Cells[0];
         }
 
 
         private void DelFreqRow()
         {
-            //删除配方一行
+            //删除频率一行
             isSaveXml = false;
 
-            if (dgv_xml_show.Rows.Count > 0)
+            if (dgv_param_show.Rows.Count > 0)
             {
-                dgv_xml_show.Rows.Remove(dgv_xml_show.CurrentRow);
+                dgv_param_show.Rows.Remove(dgv_param_show.CurrentRow);
 
-                for (int i = 0; i < dgv_xml_show.RowCount; i++)
-                {
-                    dgv_xml_show.Rows[i].Cells["TestStep"].Value = i + 1;
-                }
+                //for (int i = 0; i < dgv_param_show.RowCount; i++)
+                //{
+                //    dgv_param_show.Rows[i].Cells["TestStep"].Value = i + 1;
+                //}
             }
         }
 
@@ -375,7 +364,7 @@ namespace TestDeltaL
 
                 for (int i = 0; i < dgv_xml_show.RowCount; i++)
                 {
-                    dgv_xml_show.Rows[i].Cells["TestStep"].Value = i + 1;
+                    dgv_xml_show.Rows[i].Cells["Step"].Value = i + 1;
                 }
             }
         }
@@ -386,6 +375,17 @@ namespace TestDeltaL
             tsb_layer2.BackColor = SystemColors.Highlight;
             tsb_layer3.BackColor = SystemColors.Control;
             tsb_layer3.Checked = false;
+
+            if (dgv_xml_show.Rows.Count > 0)
+            {
+                for (int i = 0; i < dgv_xml_show.Rows.Count; i++)
+                {
+                    // 获取第三列和第五列的单元格，并更新单元格的值
+                    dgv_xml_show.Rows[i].Cells[2].Value = "2L";
+                    dgv_xml_show.Rows[i].Cells[5].Value = "--";
+                }
+            }
+
         }
 
         private void tsb_layer3_Click(object sender, EventArgs e)
@@ -394,66 +394,70 @@ namespace TestDeltaL
             tsb_layer3.BackColor = SystemColors.Highlight;
             tsb_layer2.BackColor = SystemColors.Control;
             tsb_layer2.Checked = false;
+
+            if (dgv_xml_show.Rows.Count > 0)
+            {
+                for (int i = 0; i < dgv_xml_show.Rows.Count; i++)
+                {
+                    // 获取第三列和第五列的单元格，并更新单元格的值
+                    dgv_xml_show.Rows[i].Cells[2].Value = "3L";
+                    dgv_xml_show.Rows[i].Cells[5].Value = "2";
+                }
+            }
+
         }
 
         //新增一行
         private void tsb_add_param_Click(object sender, EventArgs e)
         {
-            int curRow = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
-
-            //// 判断是否选中了任何一个单元格
-            //if (dgv_param_show.SelectedCells.Count > 0)
-            //{
-            //    // 选中了一个或多个单元格，处理逻辑
-            //    MessageBox.Show("select");
-            //}
-            //else
-            //{
-            //    // 未选中单元格，处理逻辑
-            //    MessageBox.Show("no select");
-            //}
-
-            //if (curRow == 1)
-            //{
-            //    //新增一行频率点
-            //    CreateOrAddRowFreqLimit();
-            //}
-            //else
-            //{
-            //    //新建一行配方
-            CreateOrAddRow();
-            //}
+            // 第一行第一列被选中
+            DataGridViewCell selectedCell = dgv_xml_show.SelectedCells[0];
+            if ((selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && isSelectFreqFlag) ||
+               (selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && dgv_param_show.SelectedCells.Count > 0))
+            {
+                //新增一行频率点
+                CreateOrAddRowFreqLimit();
+            }
+            else
+            {
+                //新建一行配方
+                CreateOrAddRow();
+            }
         }
 
         //复制一行
         private void tsb_copy_param_Click(object sender, EventArgs e)
         {
-            int curRow = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
-            CreateOrAddRowFreqLimit();
-            if (curRow == 1)
+            // 第一行第一列被选中
+            DataGridViewCell selectedCell = dgv_xml_show.SelectedCells[0];
+            if ((selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && isSelectFreqFlag) ||
+               (selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && dgv_param_show.SelectedCells.Count > 0))
             {
-                //复制一行频率点
-           
+                //新增一行频率点
+                CopyFreqRow();
             }
             else
             {
-                //复制一行配方
+                //新建一行配方
+                CopyRecipeRow();
             }
         }
 
         //删除一行
         private void tsb_del_param_Click(object sender, EventArgs e)
         {
-            int curRow = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
-
-            if (curRow == 1)
+            // 第一行第一列被选中
+            DataGridViewCell selectedCell = dgv_xml_show.SelectedCells[0];
+            if ((selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && isSelectFreqFlag) ||
+               (selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && dgv_param_show.SelectedCells.Count > 0))
             {
-                //删除一行频率点
-                
+                //新增一行频率点
+                DelFreqRow();
             }
             else
             {
                 //删除一行配方
+                DelRecipeRow();
             }
         }
 
@@ -464,6 +468,14 @@ namespace TestDeltaL
             // 判断是否点击的是标题行
             if (e.RowIndex == -1 && e.Button == MouseButtons.Left)
             {
+                //被选中
+                isSelectFreqFlag = true;
+
+                // 设置 DataGridView 的第2行第2列为选中状态
+                dgv_xml_show.CurrentCell = dgv_xml_show[1, 0];
+
+                //设定配方第一行第一列被选中
+
                 // 恢复之前高亮显示的行的样式
                 if (highlightedRowIndex != -1)
                 {
@@ -486,6 +498,8 @@ namespace TestDeltaL
             }
             else if (e.RowIndex >= 0 && e.Button == MouseButtons.Left)
             {
+                //取消选中
+                isSelectFreqFlag = false;
                 // 恢复之前高亮显示的行的样式
                 if (highlightedRowIndex != -1)
                 {
@@ -571,8 +585,23 @@ namespace TestDeltaL
                         dgv_xml_show.Rows[index].Cells["SaveImage"].Value = row["SaveImage"];
                     }
 
-                    foreach (DataRow row in myds.Tables[1].Rows)
+                    //foreach (DataRow row in myds.Tables[1].Rows)
+                    //{
+                    //    int index = dgv_param_show.Rows.Add();
+                    //    dgv_param_show.Rows[index].Cells["detail_ID"].Value = row["ID"];
+                    //    dgv_param_show.Rows[index].Cells["Frequency"].Value = row["Frequency"];
+                    //    dgv_param_show.Rows[index].Cells["Loss_LowerLimit"].Value = row["Loss_LowerLimit"];
+                    //    dgv_param_show.Rows[index].Cells["Loss_UpperLimit"].Value = row["Loss_UpperLimit"];
+                    //    dgv_param_show.Rows[index].Cells["Uncertainty"].Value = row["Uncertainty"];
+                    //    dgv_param_show.Rows[index].Cells["Difference"].Value = row["Difference"];
+                    //}
+
+
+                    
+                    int param_count = myds.Tables[1].Rows.Count / myds.Tables[0].Rows.Count;
+                    for (int i = 0; i < param_count; i++)
                     {
+                        DataRow row = myds.Tables[1].Rows[i];
                         int index = dgv_param_show.Rows.Add();
                         dgv_param_show.Rows[index].Cells["detail_ID"].Value = row["ID"];
                         dgv_param_show.Rows[index].Cells["Frequency"].Value = row["Frequency"];
@@ -612,6 +641,108 @@ namespace TestDeltaL
 
                 getXmlInfo(xmlFilePath);
             }
+        }
+
+        private void dgv_param_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                
+            }
+        }
+
+        /// <summary>
+        /// Converts data grid view to a data table
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <returns></returns>
+        private DataTable GetDataTableFromDGV(DataGridView dgv)
+        {
+            var dt = new DataTable();
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                if (column.Visible)
+                {
+                    // You could potentially name the column based on the DGV column name (beware of dupes)
+                    // or assign a type based on the data type of the data bound to this DGV column.
+                    dt.Columns.Add(column.Name);
+                }
+            }
+
+            object[] cellValues = new object[dgv.Columns.Count];
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    cellValues[i] = row.Cells[i].Value;
+                }
+                dt.Rows.Add(cellValues);
+            }
+
+            return dt;
+        }
+        private void tsb_save_xml_Click(object sender, EventArgs e)
+        {
+            if (dgv_xml_show.Rows.Count == 0)
+            {
+                MessageBox.Show("请新建配方");
+                return;
+            }
+
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "保存XML文件";
+            sfd.InitialDirectory = Environment.CurrentDirectory + "\\Config";
+            sfd.Filter = "XML文件|*.xml";
+
+
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+
+                if (File.Exists(sfd.FileName))
+                    File.Delete(sfd.FileName);
+
+                DataTable dT = GetDataTableFromDGV(dgv_xml_show);
+                DataSet dS = new DataSet();
+                dS.Tables.Add(dT);
+                dS.WriteXml(File.OpenWrite(sfd.FileName));
+                dgv_xml_show.Tag = Path.GetFileNameWithoutExtension(sfd.FileName);
+                xmlFilePath = sfd.FileName;
+                isSaveXml = true;
+            }
+
+
+
+            //C# 实现datagridview中的数据存放在xml中,并设置根节点的名字为 root，每一行的为一个元素，元素名设置为 page1,page2...pageN,有多少行，就有个page
+
+            //using System.Xml;
+
+            //// 创建 XmlDocument 实例
+            //XmlDocument xmlDoc = new XmlDocument();
+
+            //// 创建根节点 root，并添加到 XML 文档中
+            //XmlElement root = xmlDoc.CreateElement("root");
+            //xmlDoc.AppendChild(root);
+
+            //// 遍历 DataGridView 中的每一行，创建一个新的 page 元素
+            //for (int i = 0; i < dataGridView.Rows.Count; i++)
+            //{
+            //    XmlElement page = xmlDoc.CreateElement("page" + (i + 1));
+
+            //    // 遍历当前行的每一个单元格，创建一个新的子元素并添加到当前 page 元素中
+            //    for (int j = 0; j < dataGridView.Columns.Count; j++)
+            //    {
+            //        XmlElement cell = xmlDoc.CreateElement(dataGridView.Columns[j].Name);
+            //        cell.InnerText = dataGridView.Rows[i].Cells[j].Value.ToString();
+            //        page.AppendChild(cell);
+            //    }
+
+            //    // 将当前 page 元素添加到根节点 root 中
+            //    root.AppendChild(page);
+            //}
+
+            //// 将保存 XML 文档到文件中
+            //xmlDoc.Save("data.xml");
         }
 
 
