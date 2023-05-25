@@ -149,7 +149,7 @@ namespace TestDeltaL
                         dgv_xml_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
                     }
 
-                    dgv_xml_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows.Count.ToString();
+                    dgv_xml_show.Rows[index].Cells[0].Value = (dgv_xml_show.Rows.Count - 1).ToString();
                     dgv_xml_show.Rows[index].Cells[1].Value = dgv_xml_show.Rows.Count.ToString();
                 }
                 else
@@ -183,18 +183,17 @@ namespace TestDeltaL
                 if (dgv_param_show.DataSource == null)
                 {
                     int index = this.dgv_param_show.Rows.Add();
-                    this.dgv_param_show.Rows[index].Cells[0].Value = freqParam.Id;
+                    this.dgv_param_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows[0].Cells[1].Value;
                     this.dgv_param_show.Rows[index].Cells[1].Value = freqParam.Frequency;
                     this.dgv_param_show.Rows[index].Cells[2].Value = freqParam.LossLowerLimite;
                     this.dgv_param_show.Rows[index].Cells[3].Value = freqParam.LossUpperLimite;
                     this.dgv_param_show.Rows[index].Cells[4].Value = freqParam.Uncertainty;
                     this.dgv_param_show.Rows[index].Cells[5].Value = freqParam.Difference;
-            
                 }
                 else
                 {
                     string[] rowVals = new string[10];
-                    rowVals[0] = (freqParam.Id + 1).ToString();
+                    rowVals[0] = dgv_xml_show.Rows[0].Cells[1].Value.ToString(); 
                     rowVals[1] = freqParam.Frequency.ToString(); ;
                     rowVals[2] = freqParam.LossLowerLimite.ToString(); ;
                     rowVals[3] = freqParam.LossUpperLimite.ToString(); ;
@@ -218,7 +217,7 @@ namespace TestDeltaL
                         dgv_param_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
                     }
 
-                    dgv_param_show.Rows[index].Cells[0].Value = dgv_param_show.Rows.Count.ToString();
+                    dgv_param_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows[0].Cells[1].Value; 
 
                 }
                 else
@@ -232,8 +231,8 @@ namespace TestDeltaL
                         rowVals[i] = row.Cells[i].Value.ToString();
                     }
 
-                    rowVals[0] = (dgv_param_show.Rows.Count + 1).ToString();
-             
+                    rowVals[0] = dgv_xml_show.Rows[0].Cells[1].Value.ToString();
+
 
                     ((DataTable)dgv_param_show.DataSource).Rows.Add(rowVals);
                 }

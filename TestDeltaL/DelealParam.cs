@@ -8,7 +8,7 @@ namespace TestDeltaL
 {
     class DelealParam
     {
-        public int Id { get; set; } = 1;
+        public int Id { get; set; } = 0;
         public int TestStep { get; set; } = 1;
         public string Method { get; set; } = "3L";//"Description_Default";
         public string Layer { get; set; } = "L";//"Layer1";
