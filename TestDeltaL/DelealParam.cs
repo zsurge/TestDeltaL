@@ -30,4 +30,6 @@ namespace TestDeltaL
         public double Uncertainty { get; set; } = 0D;
         public double Difference { get; set; } = 0D;
     }
+
+
 }

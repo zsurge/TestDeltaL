@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DelealParamSet));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsb_create_xml = new System.Windows.Forms.ToolStripButton();
             this.tsb_measure_loadXml = new System.Windows.Forms.ToolStripButton();
@@ -56,18 +56,20 @@
             this.SaveCurve = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SaveImage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_confirm = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.tx_difference = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.tx_uncertainty = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tx_up = new System.Windows.Forms.TextBox();
+            this.tx_lower = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tx_freq = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -78,8 +80,6 @@
             this.Loss_UpperLimit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Uncertainty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Difference = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_confirm = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -226,7 +226,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.dgv_param_show);
             this.splitContainer1.Size = new System.Drawing.Size(910, 549);
-            this.splitContainer1.SplitterDistance = 280;
+            this.splitContainer1.SplitterDistance = 279;
             this.splitContainer1.TabIndex = 2;
             // 
             // dgv_xml_show
@@ -254,20 +254,23 @@
             this.dgv_xml_show.MultiSelect = false;
             this.dgv_xml_show.Name = "dgv_xml_show";
             this.dgv_xml_show.RowHeadersVisible = false;
+            this.dgv_xml_show.RowHeadersWidth = 51;
             this.dgv_xml_show.RowTemplate.Height = 23;
-            this.dgv_xml_show.Size = new System.Drawing.Size(910, 280);
+            this.dgv_xml_show.Size = new System.Drawing.Size(910, 279);
             this.dgv_xml_show.TabIndex = 0;
+            this.dgv_xml_show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_xml_show_CellClick);
             // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ID.DefaultCellStyle = dataGridViewCellStyle4;
             this.ID.Frozen = true;
             this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -277,6 +280,7 @@
             // 
             this.Step.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Step.HeaderText = "Step";
+            this.Step.MinimumWidth = 6;
             this.Step.Name = "Step";
             this.Step.ReadOnly = true;
             this.Step.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -285,6 +289,7 @@
             // Method
             // 
             this.Method.HeaderText = "Method";
+            this.Method.MinimumWidth = 6;
             this.Method.Name = "Method";
             this.Method.ReadOnly = true;
             this.Method.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -292,48 +297,56 @@
             // Layer
             // 
             this.Layer.HeaderText = "Layer";
+            this.Layer.MinimumWidth = 6;
             this.Layer.Name = "Layer";
             this.Layer.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Description
             // 
             this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
             this.Description.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Short_Length
             // 
             this.Short_Length.HeaderText = "Short_Length";
+            this.Short_Length.MinimumWidth = 6;
             this.Short_Length.Name = "Short_Length";
             this.Short_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Medium_Length
             // 
             this.Medium_Length.HeaderText = "Medium_Length";
+            this.Medium_Length.MinimumWidth = 6;
             this.Medium_Length.Name = "Medium_Length";
             this.Medium_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Long_Length
             // 
             this.Long_Length.HeaderText = "Long_Length";
+            this.Long_Length.MinimumWidth = 6;
             this.Long_Length.Name = "Long_Length";
             this.Long_Length.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // RecordPath
             // 
             this.RecordPath.HeaderText = "RecordPath";
+            this.RecordPath.MinimumWidth = 6;
             this.RecordPath.Name = "RecordPath";
             this.RecordPath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SaveCurve
             // 
             this.SaveCurve.HeaderText = "SaveCurve";
+            this.SaveCurve.MinimumWidth = 6;
             this.SaveCurve.Name = "SaveCurve";
             this.SaveCurve.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // SaveImage
             // 
             this.SaveImage.HeaderText = "SaveImage";
+            this.SaveImage.MinimumWidth = 6;
             this.SaveImage.Name = "SaveImage";
             this.SaveImage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
@@ -351,11 +364,31 @@
             this.panel1.Size = new System.Drawing.Size(907, 86);
             this.panel1.TabIndex = 1;
             // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(714, 49);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 4;
+            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_confirm
+            // 
+            this.btn_confirm.Location = new System.Drawing.Point(714, 22);
+            this.btn_confirm.Name = "btn_confirm";
+            this.btn_confirm.Size = new System.Drawing.Size(75, 23);
+            this.btn_confirm.TabIndex = 3;
+            this.btn_confirm.Text = "Confirm";
+            this.btn_confirm.UseVisualStyleBackColor = true;
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
+            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.tx_difference);
             this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.tx_uncertainty);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(488, 1);
             this.groupBox3.Name = "groupBox3";
@@ -364,12 +397,12 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Other Limig";
             // 
-            // textBox5
+            // tx_difference
             // 
-            this.textBox5.Location = new System.Drawing.Point(88, 49);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 21);
-            this.textBox5.TabIndex = 11;
+            this.tx_difference.Location = new System.Drawing.Point(88, 49);
+            this.tx_difference.Name = "tx_difference";
+            this.tx_difference.Size = new System.Drawing.Size(100, 21);
+            this.tx_difference.TabIndex = 11;
             // 
             // label6
             // 
@@ -380,12 +413,12 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "Uncertainty";
             // 
-            // textBox6
+            // tx_uncertainty
             // 
-            this.textBox6.Location = new System.Drawing.Point(88, 22);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 10;
+            this.tx_uncertainty.Location = new System.Drawing.Point(88, 22);
+            this.tx_uncertainty.Name = "tx_uncertainty";
+            this.tx_uncertainty.Size = new System.Drawing.Size(100, 21);
+            this.tx_uncertainty.TabIndex = 10;
             // 
             // label5
             // 
@@ -398,8 +431,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.tx_up);
+            this.groupBox2.Controls.Add(this.tx_lower);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(244, 1);
@@ -409,19 +442,19 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Loss Limit";
             // 
-            // textBox3
+            // tx_up
             // 
-            this.textBox3.Location = new System.Drawing.Point(89, 49);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 7;
+            this.tx_up.Location = new System.Drawing.Point(89, 49);
+            this.tx_up.Name = "tx_up";
+            this.tx_up.Size = new System.Drawing.Size(100, 21);
+            this.tx_up.TabIndex = 7;
             // 
-            // textBox4
+            // tx_lower
             // 
-            this.textBox4.Location = new System.Drawing.Point(89, 22);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 21);
-            this.textBox4.TabIndex = 6;
+            this.tx_lower.Location = new System.Drawing.Point(89, 22);
+            this.tx_lower.Name = "tx_lower";
+            this.tx_lower.Size = new System.Drawing.Size(100, 21);
+            this.tx_lower.TabIndex = 6;
             // 
             // label4
             // 
@@ -443,7 +476,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.tx_freq);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -454,12 +487,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Marker Setting";
             // 
-            // textBox2
+            // tx_freq
             // 
-            this.textBox2.Location = new System.Drawing.Point(84, 49);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 3;
+            this.tx_freq.Location = new System.Drawing.Point(84, 49);
+            this.tx_freq.Name = "tx_freq";
+            this.tx_freq.Size = new System.Drawing.Size(100, 21);
+            this.tx_freq.TabIndex = 3;
             // 
             // textBox1
             // 
@@ -500,29 +533,30 @@
             this.Loss_UpperLimit,
             this.Uncertainty,
             this.Difference});
-            this.dgv_param_show.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_param_show.Location = new System.Drawing.Point(0, 0);
             this.dgv_param_show.MultiSelect = false;
             this.dgv_param_show.Name = "dgv_param_show";
             this.dgv_param_show.ReadOnly = true;
             this.dgv_param_show.RowHeadersVisible = false;
+            this.dgv_param_show.RowHeadersWidth = 51;
             this.dgv_param_show.RowTemplate.Height = 23;
             this.dgv_param_show.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_param_show.Size = new System.Drawing.Size(910, 265);
+            this.dgv_param_show.Size = new System.Drawing.Size(898, 178);
             this.dgv_param_show.TabIndex = 0;
-            this.dgv_param_show.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_param_show_CellContentClick);
+            this.dgv_param_show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_param_show_CellClick);
             this.dgv_param_show.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_param_show_CellMouseDown);
             // 
             // detail_ID
             // 
             this.detail_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.detail_ID.DefaultCellStyle = dataGridViewCellStyle3;
             this.detail_ID.Frozen = true;
             this.detail_ID.HeaderText = "ID";
+            this.detail_ID.MinimumWidth = 6;
             this.detail_ID.Name = "detail_ID";
             this.detail_ID.ReadOnly = true;
             this.detail_ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -533,6 +567,7 @@
             // 
             this.Frequency.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Frequency.HeaderText = "Frequency";
+            this.Frequency.MinimumWidth = 6;
             this.Frequency.Name = "Frequency";
             this.Frequency.ReadOnly = true;
             this.Frequency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -543,6 +578,7 @@
             // 
             this.Loss_LowerLimit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Loss_LowerLimit.HeaderText = "Loss lower limit";
+            this.Loss_LowerLimit.MinimumWidth = 6;
             this.Loss_LowerLimit.Name = "Loss_LowerLimit";
             this.Loss_LowerLimit.ReadOnly = true;
             this.Loss_LowerLimit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -552,6 +588,7 @@
             // 
             this.Loss_UpperLimit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Loss_UpperLimit.HeaderText = "Loss Upper limit";
+            this.Loss_UpperLimit.MinimumWidth = 6;
             this.Loss_UpperLimit.Name = "Loss_UpperLimit";
             this.Loss_UpperLimit.ReadOnly = true;
             this.Loss_UpperLimit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -561,6 +598,7 @@
             // 
             this.Uncertainty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Uncertainty.HeaderText = "Uncertainty(%)";
+            this.Uncertainty.MinimumWidth = 6;
             this.Uncertainty.Name = "Uncertainty";
             this.Uncertainty.ReadOnly = true;
             this.Uncertainty.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -570,28 +608,11 @@
             // 
             this.Difference.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Difference.HeaderText = "Difference";
+            this.Difference.MinimumWidth = 6;
             this.Difference.Name = "Difference";
             this.Difference.ReadOnly = true;
             this.Difference.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Difference.Width = 109;
-            // 
-            // btn_confirm
-            // 
-            this.btn_confirm.Location = new System.Drawing.Point(714, 22);
-            this.btn_confirm.Name = "btn_confirm";
-            this.btn_confirm.Size = new System.Drawing.Size(75, 23);
-            this.btn_confirm.TabIndex = 3;
-            this.btn_confirm.Text = "Confirm";
-            this.btn_confirm.UseVisualStyleBackColor = true;
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(714, 49);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 4;
-            this.btn_cancel.Text = "Cancel";
-            this.btn_cancel.UseVisualStyleBackColor = true;
             // 
             // DelealParamSet
             // 
@@ -640,17 +661,17 @@
         private System.Windows.Forms.DataGridView dgv_xml_show;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tx_difference;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox tx_uncertainty;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tx_up;
+        private System.Windows.Forms.TextBox tx_lower;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tx_freq;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

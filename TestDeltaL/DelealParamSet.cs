@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -30,6 +31,10 @@ namespace TestDeltaL
 
         DelealParam delealParam = new DelealParam();
         FreqLimit   freqParam = new FreqLimit();
+
+        List<FreqLimit> freqParamList = new List<FreqLimit>();
+        Dictionary<int, List<FreqLimit>> configDict = new Dictionary<int, List<FreqLimit>>();
+
 
         public DelealParamSet(DataTable tmp)
         {
@@ -189,6 +194,10 @@ namespace TestDeltaL
                     this.dgv_param_show.Rows[index].Cells[3].Value = freqParam.LossUpperLimite;
                     this.dgv_param_show.Rows[index].Cells[4].Value = freqParam.Uncertainty;
                     this.dgv_param_show.Rows[index].Cells[5].Value = freqParam.Difference;
+
+                    freqParamList.Add(freqParam);
+                    int dictIndex = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
+                    configDict.Add(dictIndex, freqParamList);
                 }
                 else
                 {
@@ -199,6 +208,10 @@ namespace TestDeltaL
                     rowVals[3] = freqParam.LossUpperLimite.ToString(); ;
                     rowVals[4] = freqParam.Uncertainty.ToString(); ;
                     rowVals[5] = freqParam.Difference.ToString();
+
+                    freqParamList.Add(freqParam);
+                    int dictIndex = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
+                    configDict.Add(dictIndex, freqParamList);
 
                     ((DataTable)dgv_param_show.DataSource).Rows.Add(rowVals);
                 }
@@ -211,11 +224,39 @@ namespace TestDeltaL
 
                     DataGridViewRow row = dgv_param_show.Rows[dgv_param_show.CurrentRow.Index]; //获取当前行数据
 
+
                     //添加一新行，并把数据赋值给新行
                     for (int i = 0; i < row.Cells.Count; i++)
                     {
                         dgv_param_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
                     }
+
+
+
+                    int id = int.Parse(row.Cells["detail_ID"].Value.ToString());
+                    double frequency = double.Parse(row.Cells["Frequency"].Value.ToString());
+                    double lossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
+                    double lossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
+                    double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+                    double difference = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+
+                    FreqLimit freq = new FreqLimit()
+                    {
+                        Id = id,
+                        Frequency = frequency,
+                        LossLowerLimite = lossLowerLimite,
+                        LossUpperLimite = lossUpperLimite,
+                        Uncertainty = uncertainty,
+                        Difference = difference
+                    };
+
+                    //这种可以添加一行
+                    //freqParamList.Add(freq);
+
+                    //下面这种方法也可以添加一行
+                    List<FreqLimit> freqParamListToUpdate = configDict[id];
+                    freqParamListToUpdate.Add(freq);
+
 
                     dgv_param_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows[0].Cells[1].Value; 
 
@@ -230,6 +271,25 @@ namespace TestDeltaL
                     {
                         rowVals[i] = row.Cells[i].Value.ToString();
                     }
+
+                    int id = int.Parse(row.Cells["detail_ID"].Value.ToString());
+                    double frequency = double.Parse(row.Cells["Frequency"].Value.ToString());
+                    double lossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
+                    double lossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
+                    double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+                    double difference = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+
+                    FreqLimit freq = new FreqLimit()
+                    {
+                        Id = id,
+                        Frequency = frequency,
+                        LossLowerLimite = lossLowerLimite,
+                        LossUpperLimite = lossUpperLimite,
+                        Uncertainty = uncertainty,
+                        Difference = difference
+                    };
+                    freqParamList.Add(freq);
+                 
 
                     rowVals[0] = dgv_xml_show.Rows[0].Cells[1].Value.ToString();
 
@@ -312,7 +372,6 @@ namespace TestDeltaL
                 {
                     dgv_param_show.Rows[index].Cells[i].Value = row.Cells[i].Value;
                 }
-
 
                 dgv_param_show.Rows[index].Cells[1].Value = (dgv_param_show.Rows.Count).ToString();
             }
@@ -409,18 +468,26 @@ namespace TestDeltaL
         //新增一行
         private void tsb_add_param_Click(object sender, EventArgs e)
         {
-            // 第一行第一列被选中
-            DataGridViewCell selectedCell = dgv_xml_show.SelectedCells[0];
-            if ((selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && isSelectFreqFlag) ||
-               (selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && dgv_param_show.SelectedCells.Count > 0))
+            if (dgv_xml_show.RowCount == 0)
             {
-                //新增一行频率点
-                CreateOrAddRowFreqLimit();
+                //默认新建一行配方
+                CreateOrAddRow();
             }
             else
             {
-                //新建一行配方
-                CreateOrAddRow();
+                // 第一行第一列被选中
+                DataGridViewCell selectedCell = dgv_xml_show.SelectedCells[0];
+                if ((selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && isSelectFreqFlag) ||
+                   (selectedCell.ColumnIndex == 1 && selectedCell.RowIndex == 0 && dgv_param_show.SelectedCells.Count > 0))
+                {
+                    //新增一行频率点
+                    CreateOrAddRowFreqLimit();
+                }
+                else
+                {
+                    //新建一行配方
+                    CreateOrAddRow();
+                }
             }
         }
 
@@ -642,11 +709,16 @@ namespace TestDeltaL
             }
         }
 
-        private void dgv_param_show_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //频率点单击事件
+        private void dgv_param_show_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                
+                tx_freq.Text = dgv_param_show.Rows[e.RowIndex].Cells[1].Value.ToString();
+                tx_lower.Text = dgv_param_show.Rows[e.RowIndex].Cells[2].Value.ToString();
+                tx_up.Text = dgv_param_show.Rows[e.RowIndex].Cells[3].Value.ToString();
+                tx_uncertainty.Text = dgv_param_show.Rows[e.RowIndex].Cells[4].Value.ToString();
+                tx_difference.Text = dgv_param_show.Rows[e.RowIndex].Cells[5].Value.ToString();
             }
         }
 
@@ -743,6 +815,59 @@ namespace TestDeltaL
             //// 将保存 XML 文档到文件中
             //xmlDoc.Save("data.xml");
         }
+
+        private void btn_confirm_Click(object sender, EventArgs e)
+        {
+            if (dgv_param_show.CurrentRow != null)
+            {
+                int rowIndex = dgv_param_show.CurrentRow.Index;
+                dgv_param_show.Rows[rowIndex].Cells[1].Value = tx_freq.Text;
+                dgv_param_show.Rows[rowIndex].Cells[2].Value = tx_lower.Text;
+                dgv_param_show.Rows[rowIndex].Cells[3].Value = tx_up.Text;
+                dgv_param_show.Rows[rowIndex].Cells[4].Value = tx_uncertainty.Text;
+                dgv_param_show.Rows[rowIndex].Cells[5].Value = tx_difference.Text;
+
+                //这里需要更新LIST
+            }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            if (dgv_param_show.CurrentRow != null)
+            {
+                int rowIndex = dgv_param_show.CurrentRow.Index;
+                tx_freq.Text = dgv_param_show.Rows[rowIndex].Cells[1].Value.ToString();
+                tx_lower.Text = dgv_param_show.Rows[rowIndex].Cells[2].Value.ToString();
+                tx_up.Text = dgv_param_show.Rows[rowIndex].Cells[3].Value.ToString();
+                tx_uncertainty.Text = dgv_param_show.Rows[rowIndex].Cells[4].Value.ToString();
+                tx_difference.Text = dgv_param_show.Rows[rowIndex].Cells[5].Value.ToString();
+            }
+        }
+
+        private void dgv_xml_show_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (configDict.ContainsKey(e.RowIndex+1))
+                {
+                    // 包含键值为
+                }
+                else
+                {
+                    //下面这种方法也可以添加一行
+                    List<FreqLimit> newList = new List<FreqLimit>(configDict[1]);  // 复制一份 fanDict[1] 到新的列表中
+                    configDict[e.RowIndex+1] = newList;
+
+                    foreach (var freqLimit in newList)
+                    {
+                        freqLimit.Id = e.RowIndex + 1;
+                    }
+
+                }
+            }
+        }
+
+
 
 
         ////////////////////////////////////////////////////
