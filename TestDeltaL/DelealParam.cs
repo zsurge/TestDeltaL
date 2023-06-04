@@ -21,7 +21,7 @@ namespace TestDeltaL
         public bool SaveImage { get; set; } = true;
     }
 
-    class FreqLimit
+    public class FreqLimit
     {
         public int Id { get; set; } = 1;
         public double Frequency{ get; set; } = 4;
@@ -29,6 +29,12 @@ namespace TestDeltaL
         public double LossUpperLimite { get; set; } = 1.2D;//"Layer1";
         public double Uncertainty { get; set; } = 0D;
         public double Difference { get; set; } = 0D;
+    }
+
+    public class KeyFreqLimit
+    {
+        public int Key { get; set; }
+        public List<FreqLimit> Data { get; set; } = new List<FreqLimit>();
     }
 
 

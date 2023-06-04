@@ -178,6 +178,54 @@ namespace TestDeltaL
                     combDevString.BackColor = Color.Red;
                 }
             }//end E5071C
+            else if (combDevType.Text.Contains("PNA"))
+            {
+                CGloabal.g_InstrPNAModule.adress = combDevString.Text;
+
+                INI.WriteValueToIniFile("Instrument", "AddressNA", combDevString.Text);
+                INI.WriteValueToIniFile("Instrument", "NA", combDevType.Text);
+
+                CGloabal.g_curInstrument = CGloabal.g_InstrPNAModule;
+
+                int ret = PNA.Open(CGloabal.g_curInstrument.adress, ref CGloabal.g_curInstrument.nHandle);
+
+                LoggerHelper.mlog.Debug("E5063A.Open ret = " + ret.ToString());
+
+                LoggerHelper.mlog.Debug("nInstrumentHandle = " + CGloabal.g_curInstrument.nHandle.ToString());
+
+                PNA.GetInstrumentIdentifier(CGloabal.g_curInstrument.nHandle, out sn);
+
+                PNA.ClearAllErrorQueue(CGloabal.g_curInstrument.nHandle);
+
+                //深圳超能 改为20210130
+                if (sn.Contains("MY54504547"))
+                {
+                    //已付款
+                    if (209903011400 - Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmm")) <= 0)
+                    {
+                        optStatus.isConnect = false;
+                        combDevString.BackColor = Color.Red;
+                        return;
+                    }
+
+                    if (ret != 0)
+                    {
+                        optStatus.isConnect = false;
+                        combDevString.BackColor = Color.Red;
+                        MessageBox.Show("error!");
+                    }
+                    else
+                    {
+                        optStatus.isConnect = true;
+                        combDevString.BackColor = Color.Green;
+                    }
+                }
+                else
+                {
+                    optStatus.isConnect = false;
+                    combDevString.BackColor = Color.Red;
+                }
+            }//end PNA
             else
             {
                 optStatus.isConnect = false;

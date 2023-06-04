@@ -544,8 +544,8 @@
             this.dgv_param_show.Size = new System.Drawing.Size(898, 178);
             this.dgv_param_show.TabIndex = 0;
             this.dgv_param_show.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_param_show_CellClick);
-            this.dgv_param_show.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_param_show_CellMouseDown);
             this.dgv_param_show.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_param_show_ColumnHeaderMouseClick);
+            this.dgv_param_show.Leave += new System.EventHandler(this.dgv_param_show_Leave);
             // 
             // detail_ID
             // 

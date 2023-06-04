@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace TestDeltaL
 {
@@ -34,6 +35,10 @@ namespace TestDeltaL
 
         List<FreqLimit> freqParamList = new List<FreqLimit>();
         Dictionary<int, List<FreqLimit>> configDict = new Dictionary<int, List<FreqLimit>>();
+
+        public XmlSerializer serializer = new XmlSerializer(typeof(List<KeyFreqLimit>));
+
+
 
 
         public DelealParamSet(DataTable tmp)
@@ -89,6 +94,9 @@ namespace TestDeltaL
                 tsb_layer2.Visible = true;
                 tsb_layer3.Visible = true;
             }
+
+            // 保存原始标题行的背景色
+            originalHeaderColor = dgv_param_show.ColumnHeadersDefaultCellStyle.BackColor;
 
             //dgv_param_show.RowsDefaultCellStyle.SelectionBackColor = dgv_param_show.RowsDefaultCellStyle.BackColor;
             //dgv_param_show.RowsDefaultCellStyle.SelectionForeColor = dgv_param_show.RowsDefaultCellStyle.ForeColor;
@@ -197,10 +205,10 @@ namespace TestDeltaL
                     int index = this.dgv_param_show.Rows.Add();
                     this.dgv_param_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows[0].Cells[1].Value;
                     this.dgv_param_show.Rows[index].Cells[1].Value = freqParam.Frequency;
-                    //this.dgv_param_show.Rows[index].Cells[2].Value = freqParam.LossLowerLimite;
-                    //this.dgv_param_show.Rows[index].Cells[3].Value = freqParam.LossUpperLimite;
-                    //this.dgv_param_show.Rows[index].Cells[4].Value = freqParam.Uncertainty;
-                    //this.dgv_param_show.Rows[index].Cells[5].Value = freqParam.Difference;
+                    this.dgv_param_show.Rows[index].Cells[2].Value = freqParam.LossLowerLimite;
+                    this.dgv_param_show.Rows[index].Cells[3].Value = freqParam.LossUpperLimite;
+                    this.dgv_param_show.Rows[index].Cells[4].Value = freqParam.Uncertainty;
+                    this.dgv_param_show.Rows[index].Cells[5].Value = freqParam.Difference;
 
                     freqParamList.Add(freqParam);
                     int dictIndex = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
@@ -211,10 +219,10 @@ namespace TestDeltaL
                     string[] rowVals = new string[10];
                     rowVals[0] = dgv_xml_show.Rows[0].Cells[1].Value.ToString(); 
                     rowVals[1] = freqParam.Frequency.ToString(); ;
-                    //rowVals[2] = freqParam.LossLowerLimite.ToString(); ;
-                    //rowVals[3] = freqParam.LossUpperLimite.ToString(); ;
-                    //rowVals[4] = freqParam.Uncertainty.ToString(); ;
-                    //rowVals[5] = freqParam.Difference.ToString();
+                    rowVals[2] = freqParam.LossLowerLimite.ToString(); ;
+                    rowVals[3] = freqParam.LossUpperLimite.ToString(); ;
+                    rowVals[4] = freqParam.Uncertainty.ToString(); ;
+                    rowVals[5] = freqParam.Difference.ToString();
 
                     freqParamList.Add(freqParam);
                     int dictIndex = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
@@ -243,19 +251,19 @@ namespace TestDeltaL
 
                     int id = int.Parse(row.Cells["detail_ID"].Value.ToString());
                     double frequency = double.Parse(row.Cells["Frequency"].Value.ToString());
-                    //double lossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
-                    //double lossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
-                    //double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
-                    //double difference = double.Parse(row.Cells["Difference"].Value.ToString());
+                    double lossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
+                    double lossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
+                    double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+                    double difference = double.Parse(row.Cells["Difference"].Value.ToString());
 
                     FreqLimit freq = new FreqLimit()
                     {
                         Id = id,
                         Frequency = frequency,
-                        //LossLowerLimite = lossLowerLimite,
-                        //LossUpperLimite = lossUpperLimite,
-                        //Uncertainty = uncertainty,
-                        //Difference = difference
+                        LossLowerLimite = lossLowerLimite,
+                        LossUpperLimite = lossUpperLimite,
+                        Uncertainty = uncertainty,
+                        Difference = difference
                     };
 
                     //这种可以添加一行
@@ -281,21 +289,20 @@ namespace TestDeltaL
 
                     int id = int.Parse(row.Cells["detail_ID"].Value.ToString());
                     double frequency = double.Parse(row.Cells["Frequency"].Value.ToString());
-                    //double lossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
-                    //double lossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
-                    //double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
-                    //double difference = double.Parse(row.Cells["Difference"].Value.ToString());
+                    double lossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
+                    double lossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
+                    double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+                    double difference = double.Parse(row.Cells["Difference"].Value.ToString());
 
                     FreqLimit freq = new FreqLimit()
                     {
                         Id = id,
                         Frequency = frequency,
-                        //LossLowerLimite = lossLowerLimite,
-                        //LossUpperLimite = lossUpperLimite,
-                        //Uncertainty = uncertainty,
-                        //Difference = difference
+                        LossLowerLimite = lossLowerLimite,
+                        LossUpperLimite = lossUpperLimite,
+                        Uncertainty = uncertainty,
+                        Difference = difference
                     };
-                    //freqParamList.Add(freq);
                     List<FreqLimit> freqParamListToUpdate = configDict[1];//这里不用ID用1，表示只有第1行配方才可以加添频率点
                     freqParamListToUpdate.Add(freq);
 
@@ -305,9 +312,6 @@ namespace TestDeltaL
 
             dgv_param_show.CurrentCell = dgv_param_show.Rows[this.dgv_param_show.Rows.Count - 1].Cells[0];
 
-          // 设置新行的选择背景色和选择前景色为默认值
-            //dgv_param_show.Rows[dgv_param_show.Rows.Count - 1].DefaultCellStyle.SelectionBackColor = dgv_param_show.DefaultCellStyle.BackColor;
-            //dgv_param_show.Rows[dgv_param_show.Rows.Count - 1].DefaultCellStyle.SelectionForeColor = dgv_param_show.DefaultCellStyle.ForeColor;
         }//end CreateOrAddRow
 
         //拷贝一行配方
@@ -533,7 +537,7 @@ namespace TestDeltaL
         }
 
 
-
+/*
         private void dgv_param_show_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             // 判断是否点击的是标题行
@@ -596,33 +600,7 @@ namespace TestDeltaL
                 highlightedRowIndex = e.RowIndex;
             }
         }
-
-        private void set_header_default_color()
-        {
-            //// 恢复列标题行的背景色
-            //dgv_param_show.EnableHeadersVisualStyles = true;
-            //dgv_param_show.ColumnHeadersDefaultCellStyle.BackColor = originalHeaderColor;
-
-
-            if (dgv_param_show.CurrentRow != null)
-            {
-                // 获取当前行的索引
-                int currentRowIndex = dgv_param_show.CurrentRow.Index;
-
-                // 取消选中 DataGridView2 的当前选定行
-                dgv_param_show.Rows[currentRowIndex].Selected = false;
-
-                // 将 DataGridView2 的当前选定行所有单元格的边框颜色设置为未选定颜色
-                foreach (DataGridViewRow row in dgv_param_show.Rows)
-                {
-                    row.DefaultCellStyle.SelectionBackColor = dgv_param_show.DefaultCellStyle.BackColor;
-                    row.DefaultCellStyle.SelectionForeColor = dgv_param_show.DefaultCellStyle.ForeColor;
-                }
-
-            }
-        }
-
-
+        */
 
         /// <summary>
         /// 获取XML文件数据到datagrid
@@ -739,8 +717,31 @@ namespace TestDeltaL
             {
                 xmlFilePath = pOpenFileDialog.FileName;  //获取全路径文件名     
 
-                getXmlInfo(xmlFilePath);
-            }
+                //反序列化XML
+                using (TextReader reader = new StreamReader(xmlFilePath))
+                {
+                    List<KeyFreqLimit> configList = (List<KeyFreqLimit>)serializer.Deserialize(reader);
+                    //Dictionary<int, List<FreqLimit>> configDict = new Dictionary<int, List<FreqLimit>>();
+                    foreach (var item in configList)
+                    {
+                        configDict[item.Key] = item.Data;
+                    }
+                }
+
+                //将configDict 所有内容加载到
+                //if (configDict.Count > 0)
+                //{
+                //    foreach (var item in configDict)
+                //    {
+                //        foreach (var limit in item.Value)
+                //        {
+                //            dgv_xml_show.Rows.Add(limit.Id, limit.Frequency, limit.LossLowerLimite, limit.LossUpperLimite, limit.Uncertainty, limit.Difference);
+                //        }
+                //    }
+                //}
+
+                //getXmlInfo(xmlFilePath);
+            } 
         }
 
         //频率点单击事件
@@ -786,6 +787,8 @@ namespace TestDeltaL
 
             return dt;
         }
+
+
         private void tsb_save_xml_Click(object sender, EventArgs e)
         {
             if (dgv_xml_show.Rows.Count == 0)
@@ -807,13 +810,34 @@ namespace TestDeltaL
                 if (File.Exists(sfd.FileName))
                     File.Delete(sfd.FileName);
 
-                DataTable dT = GetDataTableFromDGV(dgv_xml_show);
-                DataSet dS = new DataSet();
-                dS.Tables.Add(dT);
-                dS.WriteXml(File.OpenWrite(sfd.FileName));
-                dgv_xml_show.Tag = Path.GetFileNameWithoutExtension(sfd.FileName);
-                xmlFilePath = sfd.FileName;
+                //DataTable dT = GetDataTableFromDGV(dgv_xml_show);
+                //DataSet dS = new DataSet();
+                //dS.Tables.Add(dT);
+                //dS.WriteXml(File.OpenWrite(sfd.FileName));
+                //dgv_xml_show.Tag = Path.GetFileNameWithoutExtension(sfd.FileName);
+                //xmlFilePath = sfd.FileName;
                 isSaveXml = true;
+
+
+
+
+                ////序列化configDict并写入输出流中
+                List<KeyFreqLimit> configList = new List<KeyFreqLimit>();
+
+                foreach (var item in configDict)
+                {
+                    configList.Add(new KeyFreqLimit
+                    {
+                        Key = item.Key,
+                        Data = item.Value
+                    });
+                }
+
+                using (TextWriter writer = new StreamWriter(sfd.FileName))
+                {
+                    serializer.Serialize(writer, configList);
+                }
+
             }
 
 
@@ -965,7 +989,8 @@ namespace TestDeltaL
             }
         }
 
-        private void selcet_first_row()
+        //更新频率点第一行数据
+        private void update_first_row()
         {
             if (configDict.ContainsKey(1))
             {
@@ -978,9 +1003,63 @@ namespace TestDeltaL
             }
         }
 
+        private void set_header_default_color()
+        {
+            // 恢复列标题行的背景色
+            dgv_param_show.EnableHeadersVisualStyles = true;
+            dgv_param_show.ColumnHeadersDefaultCellStyle.BackColor = originalHeaderColor;
+
+
+            if (dgv_param_show.CurrentRow != null)
+            {
+                // 获取当前行的索引
+                int currentRowIndex = dgv_param_show.CurrentRow.Index;
+
+                // 取消选中 DataGridView2 的当前选定行
+                dgv_param_show.Rows[currentRowIndex].Selected = false;
+
+                // 将 DataGridView2 的当前选定行所有单元格的边框颜色设置为未选定颜色
+                foreach (DataGridViewRow row in dgv_param_show.Rows)
+                {
+                    row.DefaultCellStyle.SelectionBackColor = dgv_param_show.DefaultCellStyle.BackColor;
+                    row.DefaultCellStyle.SelectionForeColor = dgv_param_show.DefaultCellStyle.ForeColor;
+                }
+
+            }
+        }
+
+        //单点标题事件
         private void dgv_param_show_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-           
+
+            //被选中
+            isSelectFreqFlag = true;
+
+            if (dgv_xml_show.Rows.Count > 0)
+            {
+                // 设置 DataGridView 的第2行第2列为选中状态
+                dgv_xml_show.CurrentCell = dgv_xml_show[1, 0];
+                update_first_row();
+            }
+
+
+
+            // 高亮整个标题行
+            dgv_param_show.EnableHeadersVisualStyles = false;
+            dgv_param_show.ColumnHeadersDefaultCellStyle.BackColor = dgv_param_show.ColumnHeadersDefaultCellStyle.SelectionBackColor;
+
+            // 单独设置标题行的第一列背景色为原来的颜色
+            dgv_param_show.Columns[0].HeaderCell.Style.BackColor = originalHeaderColor;
+        }
+
+
+        //丢失焦点事件
+        private void dgv_param_show_Leave(object sender, EventArgs e)
+        {
+            isSelectFreqFlag = false;
+            //// 恢复列标题行的背景色
+            dgv_param_show.EnableHeadersVisualStyles = true;
+            dgv_param_show.ColumnHeadersDefaultCellStyle.BackColor = originalHeaderColor;
         }
 
 

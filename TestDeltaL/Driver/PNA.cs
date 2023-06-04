@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
-namespace TestDeltaL.Driver
+namespace TestDeltaL
 {
 
     //public static class InstrumentCommands
@@ -21,7 +21,7 @@ namespace TestDeltaL.Driver
     //int result3 = RealTimeMeasure(nInstrumentHandle, InstrumentCommands.Marker3Command);
 
 
-    internal class PNA
+    public class PNA
     {
         private static int resourceMgr;
         public PNA()
@@ -351,7 +351,7 @@ namespace TestDeltaL.Driver
         }
 
 
-        public static int calc_short(int nInstrumentHandle, int channel, int devType, out string msg)
+        public static int calc_short(int nInstrumentHandle,out string msg)
         {
             int viError, count;
             int attr;
@@ -456,7 +456,7 @@ namespace TestDeltaL.Driver
             return viError;
         }
 
-        public static int calc_medium(int nInstrumentHandle, int channel, int devType, out string msg)
+        public static int calc_medium(int nInstrumentHandle, out string msg)
         {
             int viError, count;
             int attr;
@@ -561,7 +561,7 @@ namespace TestDeltaL.Driver
             return viError;
         }
 
-        public static int calc_long(int nInstrumentHandle, int channel, int devType, out string msg)
+        public static int calc_long(int nInstrumentHandle, out string msg)
         {
             int viError, count;
             int attr;

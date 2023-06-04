@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -409,6 +410,119 @@ namespace TestDeltaL
             DevConnectSet devConnectSet = new DevConnectSet();
             //devConnectSet.ChangeValue += new DevConnectSet.ChangeTsbHandler(Change_Tsb_Index);
             devConnectSet.Show();
+        }
+
+        private CancellationTokenSource cts;
+        private Task thread_real_thme;
+        private Task thread_calc_short;
+
+        private void btn_real_time_Click(object sender, EventArgs e)
+        {
+            cts = new CancellationTokenSource();
+
+            string[] commands = {
+            ":CALC1:MARKer1:Y?",
+            ":CALC1:MARKer2:Y?",
+            ":CALC1:MARKer3:Y?",
+
+            };
+
+            // byte[] result = new byte[200100];
+            string result = string.Empty;
+
+            PNA.real_time_query(CGloabal.g_curInstrument.nHandle);
+
+            thread_real_thme = Task.Run(() =>
+            {
+                while (!cts.Token.IsCancellationRequested)
+                {
+                    foreach (string command in commands)
+                    {
+                        PNA.RealTimeMeasure(CGloabal.g_curInstrument.nHandle, command, out result);
+                        //这里需添加判定
+                    }
+                    Thread.Sleep(10);
+                }
+            });
+        }
+
+        private async void btn_test_short_Click(object sender, EventArgs e)
+        {
+            cts.Cancel();
+
+            string result = string.Empty;
+
+
+            if (thread_real_thme != null && !thread_real_thme.IsCompleted)
+            {
+                //即时确认线程停止
+                await thread_real_thme;
+            }
+
+
+            thread_calc_short = Task.Run(() =>
+            {
+                PNA.calc_short(CGloabal.g_curInstrument.nHandle, out result);
+
+                //这里需在有判定
+
+                //这里需要有图形数据
+
+                //这里需要有数据记录
+            });
+
+        }
+
+        private async void btn_test_medium_Click(object sender, EventArgs e)
+        {
+            cts.Cancel();
+
+            string result = string.Empty;
+
+
+            if (thread_real_thme != null && !thread_real_thme.IsCompleted)
+            {
+                //即时确认线程停止
+                await thread_real_thme;
+            }
+
+
+            thread_calc_short = Task.Run(() =>
+            {
+                PNA.calc_medium(CGloabal.g_curInstrument.nHandle, out result);
+
+                //这里需在有判定
+
+                //这里需要有图形数据
+
+                //这里需要有数据记录
+            });
+        }
+
+        private async void btn_test_long_Click(object sender, EventArgs e)
+        {
+            cts.Cancel();
+
+            string result = string.Empty;
+
+
+            if (thread_real_thme != null && !thread_real_thme.IsCompleted)
+            {
+                //即时确认线程停止
+                await thread_real_thme;
+            }
+
+
+            thread_calc_short = Task.Run(() =>
+            {
+                PNA.calc_long(CGloabal.g_curInstrument.nHandle, out result);
+
+                //这里需在有判定
+
+                //这里需要有图形数据
+
+                //这里需要有数据记录
+            });
         }
     }
 }
