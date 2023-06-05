@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestDeltaL
 {
-    class DelealParam
+    public class ListData
     {
         public int Id { get; set; } = 0;
         public int TestStep { get; set; } = 1;
@@ -21,7 +21,7 @@ namespace TestDeltaL
         public bool SaveImage { get; set; } = true;
     }
 
-    public class FreqLimit
+    public class MarkerData
     {
         public int Id { get; set; } = 1;
         public double Frequency{ get; set; } = 4;
@@ -34,7 +34,14 @@ namespace TestDeltaL
     public class KeyFreqLimit
     {
         public int Key { get; set; }
-        public List<FreqLimit> Data { get; set; } = new List<FreqLimit>();
+        public List<MarkerData> Data { get; set; } = new List<MarkerData>();
+    }
+
+
+    public class DeltaL
+    {
+        public List<ListData> Lists { get; set; }
+        public List<MarkerData> Markers { get; set; }
     }
 
 

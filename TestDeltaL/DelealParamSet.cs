@@ -26,19 +26,27 @@ namespace TestDeltaL
         private bool isSelectFreqFlag = false;
 
         private Color originalHeaderColor;      //保存默认背景色
-        private int highlightedRowIndex = -1; // 记录当前高亮显示的行索引
+
+        //private int highlightedRowIndex = -1; // 记录当前高亮显示的行索引
 
         public static string xmlFilePath = string.Empty; //配方存放地址
 
-        DelealParam delealParam = new DelealParam();
-        FreqLimit   freqParam = new FreqLimit();
+        
+        MarkerData   freqParam = new MarkerData();
 
-        List<FreqLimit> freqParamList = new List<FreqLimit>();
-        Dictionary<int, List<FreqLimit>> configDict = new Dictionary<int, List<FreqLimit>>();
+        List<MarkerData> freqParamList = new List<MarkerData>();
+
+        Dictionary<int, List<MarkerData>> configDict = new Dictionary<int, List<MarkerData>>();
 
         public XmlSerializer serializer = new XmlSerializer(typeof(List<KeyFreqLimit>));
 
-
+        //存放所有数据
+        public ListData delealParam = new ListData();
+        public DeltaL gDeltaLData = new DeltaL
+        {
+            Lists = new List<ListData>(),
+            Markers = new List<MarkerData>()
+        };
 
 
         public DelealParamSet(DataTable tmp)
@@ -54,6 +62,8 @@ namespace TestDeltaL
         public delegate void ChangeDgvHandler(DataGridView dgv);  //定义委托
         public event ChangeDgvHandler ChangeDgv;  //定义事件
 
+
+        //新建档案
         private void tsb_create_xml_Click(object sender, EventArgs e)
         {
             isSaveXml = false;
@@ -80,6 +90,7 @@ namespace TestDeltaL
             CreateOrAddRow();
         }
 
+        //初始化装载
         private void DelealParamSet_Load(object sender, EventArgs e)
         {
             if (PubConfig.gDeviceType == PubConfig.DeviceType.TDR)
@@ -103,6 +114,40 @@ namespace TestDeltaL
 
         }
 
+        private ListData save_xml_row_data(int cur_index)
+        {
+            //创建一个新的ListData对象来保存rowVals数组中的值
+            ListData row_data = new ListData();
+
+            row_data.Id = int.Parse(dgv_xml_show.Rows[cur_index].Cells[0].Value.ToString());
+            row_data.TestStep = int.Parse(dgv_xml_show.Rows[cur_index].Cells[1].Value.ToString());
+            row_data.Method = dgv_xml_show.Rows[cur_index].Cells[2].Value.ToString();
+            row_data.Layer = dgv_xml_show.Rows[cur_index].Cells[3].Value.ToString();
+            row_data.Description = dgv_xml_show.Rows[cur_index].Cells[4].Value.ToString();
+            row_data.ShortLength = dgv_xml_show.Rows[cur_index].Cells[5].Value.ToString();
+            row_data.MediumLength = int.Parse(dgv_xml_show.Rows[cur_index].Cells[6].Value.ToString());
+            row_data.LongLength = int.Parse(dgv_xml_show.Rows[cur_index].Cells[7].Value.ToString());
+            row_data.RecordPath = dgv_xml_show.Rows[cur_index].Cells[8].Value.ToString();
+            row_data.SaveCurve = bool.Parse(dgv_xml_show.Rows[cur_index].Cells[9].Value.ToString());
+            row_data.SaveImage = bool.Parse(dgv_xml_show.Rows[cur_index].Cells[10].Value.ToString());
+
+            return row_data;
+        }
+
+        private MarkerData save_freq_row_data(int cur_index)
+        {
+            //创建一个新的ListData对象来保存rowVals数组中的值
+            MarkerData row_data = new MarkerData();
+
+            row_data.Id = int.Parse(dgv_param_show.Rows[cur_index].Cells[0].Value.ToString());
+            row_data.Frequency = int.Parse(dgv_param_show.Rows[cur_index].Cells[1].Value.ToString());
+            row_data.LossLowerLimite = double.Parse(dgv_param_show.Rows[cur_index].Cells[2].Value.ToString());
+            row_data.LossUpperLimite = double.Parse(dgv_param_show.Rows[cur_index].Cells[3].Value.ToString());
+            row_data.Uncertainty = int.Parse(dgv_param_show.Rows[cur_index].Cells[4].Value.ToString());
+            row_data.Difference = int.Parse(dgv_param_show.Rows[cur_index].Cells[5].Value.ToString());
+
+            return row_data;
+        }
 
 
         //新增或者是新添加一行
@@ -113,11 +158,15 @@ namespace TestDeltaL
             {
                 delealParam.Method = "2L";
                 delealParam.ShortLength = "--";
+
+                //这里还需要将已保存的改为2L和--
             }
             else
             {
                 delealParam.Method = "3L";
                 delealParam.ShortLength = "3";
+
+                //这里还需要将已保存的改为3L和3
             }
       
 
@@ -137,12 +186,16 @@ namespace TestDeltaL
                     this.dgv_xml_show.Rows[index].Cells[8].Value = delealParam.RecordPath;
                     this.dgv_xml_show.Rows[index].Cells[9].Value = delealParam.SaveCurve;
                     this.dgv_xml_show.Rows[index].Cells[10].Value = delealParam.SaveImage;
+
+                    gDeltaLData.Lists.Add(save_xml_row_data(index));
                 }
                 else
                 {
                     string[] rowVals = new string[24];
-                    rowVals[0] = (delealParam.Id + 1).ToString();
-                    rowVals[1] = (dgv_xml_show.Rows.Count + 1).ToString(); //(delealParam.TestStep++).ToString();
+                    delealParam.Id += 1;
+                    rowVals[0] = delealParam.Id.ToString();
+                    delealParam.TestStep = dgv_xml_show.Rows.Count + 1;
+                    rowVals[1] = delealParam.TestStep.ToString(); //(delealParam.TestStep++).ToString();
                     rowVals[2] = delealParam.Method;
                     rowVals[3] = delealParam.Layer;
                     rowVals[4] = delealParam.Description;
@@ -152,6 +205,9 @@ namespace TestDeltaL
                     rowVals[8] = delealParam.RecordPath;
                     rowVals[9] = delealParam.SaveCurve.ToString();
                     rowVals[10] = delealParam.SaveImage.ToString();
+
+                    gDeltaLData.Lists.Add(delealParam);
+
                     ((DataTable)dgv_xml_show.DataSource).Rows.Add(rowVals);
                 }
             }
@@ -171,6 +227,8 @@ namespace TestDeltaL
 
                     dgv_xml_show.Rows[index].Cells[0].Value = (dgv_xml_show.Rows.Count - 1).ToString();
                     dgv_xml_show.Rows[index].Cells[1].Value = dgv_xml_show.Rows.Count.ToString();
+
+                    gDeltaLData.Lists.Add(save_xml_row_data(index));
                 }
                 else
                 {
@@ -185,6 +243,9 @@ namespace TestDeltaL
    
                     rowVals[0] = (dgv_xml_show.Rows.Count + 1).ToString();
                     rowVals[1] = (dgv_xml_show.Rows.Count + 1).ToString();
+
+                    //这里这个序列号可能有问题，需要再确认20230605
+                    gDeltaLData.Lists.Add(save_xml_row_data(dgv_xml_show.Rows.Count));
 
                     ((DataTable)dgv_xml_show.DataSource).Rows.Add(rowVals);
                 }
@@ -203,12 +264,15 @@ namespace TestDeltaL
                 if (dgv_param_show.DataSource == null)
                 {
                     int index = this.dgv_param_show.Rows.Add();
-                    this.dgv_param_show.Rows[index].Cells[0].Value = dgv_xml_show.Rows[0].Cells[1].Value;
+                    freqParam.Id = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
+                    this.dgv_param_show.Rows[index].Cells[0].Value = freqParam.Id;
                     this.dgv_param_show.Rows[index].Cells[1].Value = freqParam.Frequency;
                     this.dgv_param_show.Rows[index].Cells[2].Value = freqParam.LossLowerLimite;
                     this.dgv_param_show.Rows[index].Cells[3].Value = freqParam.LossUpperLimite;
                     this.dgv_param_show.Rows[index].Cells[4].Value = freqParam.Uncertainty;
                     this.dgv_param_show.Rows[index].Cells[5].Value = freqParam.Difference;
+
+                    gDeltaLData.Markers.Add(save_freq_row_data(index));
 
                     freqParamList.Add(freqParam);
                     int dictIndex = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
@@ -217,12 +281,15 @@ namespace TestDeltaL
                 else
                 {
                     string[] rowVals = new string[10];
-                    rowVals[0] = dgv_xml_show.Rows[0].Cells[1].Value.ToString(); 
+                    freqParam.Id = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
+                    rowVals[0] = freqParam.Id.ToString(); 
                     rowVals[1] = freqParam.Frequency.ToString(); ;
                     rowVals[2] = freqParam.LossLowerLimite.ToString(); ;
                     rowVals[3] = freqParam.LossUpperLimite.ToString(); ;
                     rowVals[4] = freqParam.Uncertainty.ToString(); ;
                     rowVals[5] = freqParam.Difference.ToString();
+
+                    //gDeltaLData.Markers.Add(save_freq_row_data(index));
 
                     freqParamList.Add(freqParam);
                     int dictIndex = int.Parse(dgv_xml_show.Rows[0].Cells[1].Value.ToString());
@@ -256,7 +323,7 @@ namespace TestDeltaL
                     double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
                     double difference = double.Parse(row.Cells["Difference"].Value.ToString());
 
-                    FreqLimit freq = new FreqLimit()
+                    MarkerData freq = new MarkerData()
                     {
                         Id = id,
                         Frequency = frequency,
@@ -266,12 +333,14 @@ namespace TestDeltaL
                         Difference = difference
                     };
 
+                    gDeltaLData.Markers.Add(save_freq_row_data(index));
+
                     //这种可以添加一行
                     //freqParamList.Add(freq);
 
                     //下面这种方法也可以添加一行
-                    //List<FreqLimit> freqParamListToUpdate = configDict[id];
-                    List<FreqLimit> freqParamListToUpdate = configDict[1];//这里不用ID用1，表示只有第1行配方才可以加添频率点
+                    //List<MarkerData> freqParamListToUpdate = configDict[id];
+                    List<MarkerData> freqParamListToUpdate = configDict[1];//这里不用ID用1，表示只有第1行配方才可以加添频率点
                     freqParamListToUpdate.Add(freq);
                 }
                 else
@@ -294,7 +363,7 @@ namespace TestDeltaL
                     double uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
                     double difference = double.Parse(row.Cells["Difference"].Value.ToString());
 
-                    FreqLimit freq = new FreqLimit()
+                    MarkerData freq = new MarkerData()
                     {
                         Id = id,
                         Frequency = frequency,
@@ -303,9 +372,11 @@ namespace TestDeltaL
                         Uncertainty = uncertainty,
                         Difference = difference
                     };
-                    List<FreqLimit> freqParamListToUpdate = configDict[1];//这里不用ID用1，表示只有第1行配方才可以加添频率点
+                    List<MarkerData> freqParamListToUpdate = configDict[1];//这里不用ID用1，表示只有第1行配方才可以加添频率点
                     freqParamListToUpdate.Add(freq);
 
+
+                    gDeltaLData.Markers.Add(save_freq_row_data(dgv_param_show.CurrentRow.Index));
 
                 }
             }//end dgv_param_show.Rows.Count == 0
@@ -892,19 +963,19 @@ namespace TestDeltaL
 
                 if (configDict.ContainsKey(currentRowIndex))
                 {
-                    List<FreqLimit> updateFreq = configDict[currentRowIndex];
+                    List<MarkerData> updateFreq = configDict[currentRowIndex];
 
                     DataGridViewRow row = dgv_param_show.Rows[rowIndex]; //获取当前行数据
                     
-                    FreqLimit freqLimit = new FreqLimit();
-                    freqLimit.Id = int.Parse(row.Cells["detail_ID"].Value.ToString());
-                    freqLimit.Frequency = double.Parse(row.Cells["Frequency"].Value.ToString());
-                    freqLimit.LossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
-                    freqLimit.LossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
-                    freqLimit.Uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
-                    freqLimit.Difference = double.Parse(row.Cells["Difference"].Value.ToString());
+                    MarkerData MarkerData = new MarkerData();
+                    MarkerData.Id = int.Parse(row.Cells["detail_ID"].Value.ToString());
+                    MarkerData.Frequency = double.Parse(row.Cells["Frequency"].Value.ToString());
+                    MarkerData.LossLowerLimite = double.Parse(row.Cells["Loss_LowerLimit"].Value.ToString());
+                    MarkerData.LossUpperLimite = double.Parse(row.Cells["Loss_UpperLimit"].Value.ToString());
+                    MarkerData.Uncertainty = double.Parse(row.Cells["Uncertainty"].Value.ToString());
+                    MarkerData.Difference = double.Parse(row.Cells["Difference"].Value.ToString());
 
-                    updateFreq[rowIndex] = freqLimit;
+                    updateFreq[rowIndex] = MarkerData;
                 }
             }
         }
@@ -946,24 +1017,24 @@ namespace TestDeltaL
                         return;
                     }
 
-                    List<FreqLimit> newList = new List<FreqLimit>();
-                    foreach (var freqLimit in configDict[1])
+                    List<MarkerData> newList = new List<MarkerData>();
+                    foreach (var MarkerData in configDict[1])
                     {
-                        var newFreqLimit = new FreqLimit();
-                        newFreqLimit.Id = e.RowIndex + 1;
-                        newFreqLimit.Frequency = freqLimit.Frequency;
-                        //newFreqLimit.LossLowerLimite = freqLimit.LossLowerLimite;
-                        //newFreqLimit.LossUpperLimite = freqLimit.LossUpperLimite;
-                        //newFreqLimit.Uncertainty = freqLimit.Uncertainty;
-                        //newFreqLimit.Difference = freqLimit.Difference;
-                        newList.Add(newFreqLimit);
+                        var newMarkerData = new MarkerData();
+                        newMarkerData.Id = e.RowIndex + 1;
+                        newMarkerData.Frequency = MarkerData.Frequency;
+                        //newMarkerData.LossLowerLimite = MarkerData.LossLowerLimite;
+                        //newMarkerData.LossUpperLimite = MarkerData.LossUpperLimite;
+                        //newMarkerData.Uncertainty = MarkerData.Uncertainty;
+                        //newMarkerData.Difference = MarkerData.Difference;
+                        newList.Add(newMarkerData);
                     }
                     configDict[e.RowIndex + 1] = newList;
                 }
                 else
                 {
                     // 如果 configDict[2] 的元素数量少于 configDict[1]，则进行补齐
-                    List<FreqLimit> tempValue = configDict[1];
+                    List<MarkerData> tempValue = configDict[1];
                     int src_index = configDict[1].Count;
                     int cur_index = configDict[e.RowIndex + 1].Count;
                     int countDiff = src_index - cur_index;
@@ -979,11 +1050,11 @@ namespace TestDeltaL
                 }
 
                 // 包含键值为
-                var freqLimits = configDict[e.RowIndex + 1];
+                var MarkerDatas = configDict[e.RowIndex + 1];
                 dgv_param_show.Rows.Clear();
-                foreach (var freqLimit in freqLimits)
+                foreach (var MarkerData in MarkerDatas)
                 {
-                    dgv_param_show.Rows.Add(freqLimit.Id, freqLimit.Frequency, freqLimit.LossLowerLimite, freqLimit.LossUpperLimite, freqLimit.Uncertainty, freqLimit.Difference);
+                    dgv_param_show.Rows.Add(MarkerData.Id, MarkerData.Frequency, MarkerData.LossLowerLimite, MarkerData.LossUpperLimite, MarkerData.Uncertainty, MarkerData.Difference);
                 }
 
             }
@@ -994,11 +1065,11 @@ namespace TestDeltaL
         {
             if (configDict.ContainsKey(1))
             {
-                var freqLimits = configDict[1];
+                var MarkerDatas = configDict[1];
                 dgv_param_show.Rows.Clear();
-                foreach (var freqLimit in freqLimits)
+                foreach (var MarkerData in MarkerDatas)
                 {
-                    dgv_param_show.Rows.Add(freqLimit.Id, freqLimit.Frequency, freqLimit.LossLowerLimite, freqLimit.LossUpperLimite, freqLimit.Uncertainty, freqLimit.Difference);
+                    dgv_param_show.Rows.Add(MarkerData.Id, MarkerData.Frequency, MarkerData.LossLowerLimite, MarkerData.LossUpperLimite, MarkerData.Uncertainty, MarkerData.Difference);
                 }
             }
         }
