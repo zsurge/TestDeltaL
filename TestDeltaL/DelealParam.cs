@@ -25,18 +25,11 @@ namespace TestDeltaL
     {
         public int Id { get; set; } = 1;
         public double Frequency{ get; set; } = 4;
-        public double LossLowerLimite { get; set; } = 0.8D;//"Description_Default";
-        public double LossUpperLimite { get; set; } = 1.2D;//"Layer1";
+        public double LossLowerLimite { get; set; } = 0.8D;
+        public double LossUpperLimite { get; set; } = 1.2D;
         public double Uncertainty { get; set; } = 0D;
         public double Difference { get; set; } = 0D;
     }
-
-    public class KeyFreqLimit
-    {
-        public int Key { get; set; }
-        public List<MarkerData> Data { get; set; } = new List<MarkerData>();
-    }
-
 
     public class DeltaL
     {
